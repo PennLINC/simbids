@@ -153,8 +153,8 @@ def create_mock_input_dataset(output_dir, yaml_file, zip_level):
 
     # Load the YAML file from the package resources if it exists there,
     # otherwise load it from the local file system
-    if resources.files('simbids.bids_skeletons').joinpath(yaml_file).exists():
-        with resources.files('simbids.bids_skeletons').joinpath(yaml_file).open() as f:
+    if resources.files('simbids.data.bids-mri').joinpath(yaml_file).exists():
+        with resources.files('simbids.data.bids-mri').joinpath(yaml_file).open() as f:
             bids_skeleton = yaml.safe_load(f)
     elif Path(yaml_file).exists():
         with open(yaml_file) as f:
@@ -177,7 +177,7 @@ def create_mock_input_dataset(output_dir, yaml_file, zip_level):
             with zipfile.ZipFile(zip_path, 'w') as zf:
                 for file_path in subject.rglob('*'):
                     if file_path.is_file():
-                        arcname = f'qsiprep/{subject.name}/{file_path.relative_to(subject)}'
+                        arcname = f'simbids/{subject.name}/{file_path.relative_to(subject)}'
                         zf.write(file_path, arcname)
         shutil.rmtree(dataset_dir)
     elif zip_level == 'session':
@@ -198,6 +198,7 @@ def create_mock_input_dataset(output_dir, yaml_file, zip_level):
     dlapi.create(path=output_dir, force=True)
 
     # Datalad save the zip files
-    dlapi.save(dataset=output_dir, message='Add zip files')
+    msg = 'Add zip files' if zip_level != 'none' else 'Add dataset'
+    dlapi.save(dataset=output_dir, message=msg)
 
     return output_dir
