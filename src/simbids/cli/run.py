@@ -34,11 +34,9 @@ def main():
     import sys
     from multiprocessing import Manager, Process
     from os import EX_SOFTWARE
-    from pathlib import Path
 
     from simbids.cli.parser import parse_args
     from simbids.cli.workflow import build_workflow
-    from simbids.utils.bids import write_bidsignore, write_derivative_description
 
     parse_args()
 
@@ -144,7 +142,6 @@ def main():
         '\n'.join(['SimBIDS config:'] + [f'\t\t{s}' for s in config.dumps().splitlines()]),
     )
     config.loggers.workflow.log(25, 'SimBIDS started!')
-    errno = 1  # Default is error exit unless otherwise set
     try:
         simbids_wf.run(**config.nipype.get_plugin())
     except Exception as e:
@@ -172,32 +169,6 @@ def main():
             sentry_sdk.add_breadcrumb(message=success_message, level='info')
             sentry_sdk.capture_message(success_message, level='info')
 
-        # Bother users with the boilerplate only iff the workflow went okay.
-        boiler_file = config.execution.output_dir / 'logs' / 'CITATION.md'
-        if boiler_file.exists():
-            if config.environment.exec_env in (
-                'singularity',
-                'docker',
-                'simbids-docker',
-            ):
-                boiler_file = Path('<OUTPUT_PATH>') / boiler_file.relative_to(
-                    config.execution.output_dir
-                )
-
-            config.loggers.workflow.log(
-                25,
-                'Works derived from this SimBIDS execution should include the '
-                f'boilerplate text found in {boiler_file}.',
-            )
-
-        if config.workflow.run_reconall:
-            from niworkflows.utils.misc import _copy_any
-            from templateflow import api
-
-            dseg_tsv = str(api.get('fsaverage', suffix='dseg', extension=['.tsv']))
-            _copy_any(dseg_tsv, str(config.execution.output_dir / 'desc-aseg_dseg.tsv'))
-            _copy_any(dseg_tsv, str(config.execution.output_dir / 'desc-aparcaseg_dseg.tsv'))
-        errno = 0
     finally:
         # Code Carbon
         if config.execution.track_carbon:
@@ -205,28 +176,6 @@ def main():
             config.loggers.workflow.log(25, 'CodeCarbon tracker has stopped.')
             config.loggers.workflow.log(25, f'Saving logs at: {config.execution.log_dir}')
             config.loggers.workflow.log(25, f'Carbon emissions: {emissions} kg')
-
-        from simbids.reports.core import generate_reports
-
-        # Generate reports phase
-        failed_reports = generate_reports(
-            subject_list=config.execution.participant_label,
-            output_dir=config.execution.output_dir,
-            run_uuid=config.execution.run_uuid,
-        )
-        write_derivative_description(
-            input_dir=config.execution.bids_dir,
-            output_dir=config.execution.output_dir,
-            dataset_links=config.execution.dataset_links,
-        )
-        write_bidsignore(config.execution.output_dir)
-
-        if sentry_sdk is not None and failed_reports:
-            sentry_sdk.capture_message(
-                f'Report generation failed for {failed_reports} subjects',
-                level='error',
-            )
-        sys.exit(int((errno + len(failed_reports)) > 0))
 
 
 def migas_exit() -> None:
