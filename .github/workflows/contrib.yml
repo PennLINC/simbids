@@ -39,4 +39,5 @@ jobs:
       - name: Codespell
         uses: codespell-project/actions-codespell@v2
         with:
-          exclude_file: .codespellignore
+          skip: "src/simbids/data/**/*.yaml,src/simbids/data/**/*.yml"
+          ignore_words_list: ND
