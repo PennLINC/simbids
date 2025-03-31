@@ -159,8 +159,8 @@ def simulate_dataset(output_dir, yaml_file, zip_level, fill_files=False):
 
     # Load the YAML file from the package resources if it exists there,
     # otherwise load it from the local file system
-    if resources.files('simbids.data.bids-mri').joinpath(yaml_file).exists():
-        with resources.files('simbids.data.bids-mri').joinpath(yaml_file).open() as f:
+    if resources.files('simbids.data').joinpath(yaml_file).exists():
+        with resources.files('simbids.data').joinpath(yaml_file).open() as f:
             bids_skeleton = yaml.safe_load(f)
     elif Path(yaml_file).exists():
         with open(yaml_file) as f:
