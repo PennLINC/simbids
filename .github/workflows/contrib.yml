@@ -38,3 +38,6 @@ jobs:
         uses: actions/checkout@v4
       - name: Codespell
         uses: codespell-project/actions-codespell@v2
+        with:
+          skip: "src/simbids/data/**/*.yaml,src/simbids/data/**/*.yml"
+          ignore_words_list: ND
