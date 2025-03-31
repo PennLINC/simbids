@@ -20,7 +20,7 @@
 #
 #     https://www.nipreps.org/community/licensing/
 #
-"""Workflow functions for fMRIPost-template."""
+"""Workflow functions for SimBIDS."""
 
 from . import base
 

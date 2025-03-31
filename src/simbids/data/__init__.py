@@ -20,7 +20,7 @@
 #
 #     https://www.nipreps.org/community/licensing/
 #
-"""fMRIPost-template data files
+"""SimBIDS data files
 
 .. autofunction:: load
 
