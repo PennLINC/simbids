@@ -39,4 +39,4 @@ jobs:
       - name: Codespell
         uses: codespell-project/actions-codespell@v2
         with:
-          exclude-file: .codespellignore
+          exclude_file: .codespellignore
