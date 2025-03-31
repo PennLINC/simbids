@@ -24,6 +24,7 @@
 
 import logging
 from pathlib import Path
+
 import yaml
 
 LGR = logging.getLogger(__name__)
@@ -278,9 +279,9 @@ def _convert_to_serializable(obj):
     """Convert BIDS objects to basic Python types for YAML serialization."""
     if hasattr(obj, 'get_metadata'):
         return obj.get_metadata()
-    if isinstance(obj, (int, float, str, bool, type(None))):
+    if isinstance(obj, int | float | str | bool | type(None)):
         return obj
-    if isinstance(obj, (list, tuple)):
+    if isinstance(obj, list | tuple):
         return [_convert_to_serializable(item) for item in obj]
     if isinstance(obj, dict):
         return {k: _convert_to_serializable(v) for k, v in obj.items()}
