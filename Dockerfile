@@ -240,6 +240,6 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.description="SimBIDS - A template fMRI post-processing workflow" \
       org.label-schema.url="https://simbids.org" \
       org.label-schema.vcs-ref=$VCS_REF \
-      org.label-schema.vcs-url="https://github.com/nipreps/simbids" \
+      org.label-schema.vcs-url="https://github.com/pennlinc/simbids" \
       org.label-schema.version=$VERSION \
       org.label-schema.schema-version="1.0"

@@ -26,14 +26,14 @@ jobs:
       - name: Log in to Docker Hub
         uses: docker/login-action@v3.4.0
         with:
-          username: niprepsbot
+          username: pennlincbot
           password: ${{ secrets.DOCKER_TOKEN }}
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
         uses: docker/metadata-action@v5.7.0
         with:
-          images: nipreps/simbids
+          images: pennlinc/simbids
           # generate Docker tags based on the following events/attributes
           tags: |
             type=ref,event=branch

@@ -343,7 +343,7 @@ texinfo_documents = [
 # The following is used by sphinx.ext.linkcode to provide links to github
 linkcode_resolve = make_linkcode_resolve(
     'simbids',
-    'https://github.com/nipreps/SimBIDS/blob/{revision}/{package}/{path}#L{lineno}',
+    'https://github.com/pennlinc/SimBIDS/blob/{revision}/{package}/{path}#L{lineno}',
 )
 
 # Links to external libraries' API documentation for intersphinx linking.
