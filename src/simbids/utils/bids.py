@@ -130,7 +130,7 @@ def combine_entities(**entities):
     return f'_{"_".join([f"{lab}-{val}" for lab, val in entities.items()])}' if entities else ''
 
 
-def create_mock_input_dataset(output_dir, yaml_file, zip_level):
+def simulate_dataset(output_dir, yaml_file, zip_level, fill_files=False):
     """Create a mock zipped input dataset with n_subjects, each with n_sessions.
 
     Parameters
@@ -141,6 +141,9 @@ def create_mock_input_dataset(output_dir, yaml_file, zip_level):
         The name of the YAML file to use for the BIDS skeleton.
     zip_level : {'subject', 'session', 'none'}
         The level at which to zip the dataset.
+    fill_files : bool, optional
+        Whether to fill the files with random data.
+        Default is False.
 
     Returns
     -------
@@ -148,6 +151,9 @@ def create_mock_input_dataset(output_dir, yaml_file, zip_level):
         The path containing the input dataset. Clone this dataset to
         simulate what happens in a BABS initialization.
     """
+    if zip_level not in ['subject', 'session', 'none']:
+        raise ValueError(f'Invalid zip level: {zip_level}')
+
     output_dir = Path(output_dir)
     dataset_dir = output_dir / 'simbids'
 
@@ -166,9 +172,10 @@ def create_mock_input_dataset(output_dir, yaml_file, zip_level):
     generate_bids_skeleton(dataset_dir, bids_skeleton)
 
     # Loop over all files in qsiprep_dir and if they are .nii.gz, write random data to them
-    for file_path in dataset_dir.rglob('*.nii.gz'):
-        with open(file_path, 'wb') as f:
-            f.write(os.urandom(10 * 1024 * 1024))  # 10MB of random data
+    if fill_files:
+        for file_path in dataset_dir.rglob('*.nii.gz'):
+            with open(file_path, 'wb') as f:
+                f.write(os.urandom(10 * 1024 * 1024))  # 10MB of random data
 
     # Zip the dataset
     if zip_level == 'subject':
