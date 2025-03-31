@@ -5,7 +5,7 @@ from json import loads
 from bids.layout import Config
 from niworkflows.interfaces.bids import DerivativesDataSink as BaseDerivativesDataSink
 
-from fmripost_template.data import load as load_data
+from simbids.data import load as load_data
 
 # NOTE: Modified for fmripost_template's purposes
 fmripost_template_spec = loads(load_data('io_spec.json').read_text())

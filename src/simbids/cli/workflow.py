@@ -41,9 +41,9 @@ def build_workflow(config_file, retval):
     from niworkflows.utils.bids import collect_participants
     from pkg_resources import resource_filename as pkgrf
 
-    from fmripost_template import config
-    from fmripost_template.reports.core import generate_reports
-    from fmripost_template.workflows.base import init_fmripost_template_wf
+    from simbids import config
+    from simbids.reports.core import generate_reports
+    from simbids.workflows.base import init_fmripost_template_wf
 
     config.load(config_file)
     build_log = config.loggers.workflow
@@ -135,7 +135,7 @@ def build_workflow(config_file, retval):
 
 def build_boilerplate(config_file, workflow):
     """Write boilerplate in an isolated process."""
-    from fmripost_template import config
+    from simbids import config
 
     config.load(config_file)
     logs_path = config.execution.output_dir / 'logs'

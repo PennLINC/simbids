@@ -22,7 +22,7 @@
 #
 """fMRI post-processing template workflow."""
 
-from fmripost_template import config
+from simbids import config
 
 EXITCODE: int = -1
 
@@ -36,9 +36,9 @@ def main():
     from os import EX_SOFTWARE
     from pathlib import Path
 
-    from fmripost_template.cli.parser import parse_args
-    from fmripost_template.cli.workflow import build_workflow
-    from fmripost_template.utils.bids import write_bidsignore, write_derivative_description
+    from simbids.cli.parser import parse_args
+    from simbids.cli.workflow import build_workflow
+    from simbids.utils.bids import write_bidsignore, write_derivative_description
 
     parse_args()
 
@@ -119,7 +119,7 @@ def main():
 
     # Generate boilerplate
     with Manager() as mgr:
-        from fmripost_template.cli.workflow import build_boilerplate
+        from simbids.cli.workflow import build_boilerplate
 
         p = Process(target=build_boilerplate, args=(str(config_file), fmripost_template_wf))
         p.start()
@@ -208,7 +208,7 @@ def main():
             config.loggers.workflow.log(25, f'Saving logs at: {config.execution.log_dir}')
             config.loggers.workflow.log(25, f'Carbon emissions: {emissions} kg')
 
-        from fmripost_template.reports.core import generate_reports
+        from simbids.reports.core import generate_reports
 
         # Generate reports phase
         failed_reports = generate_reports(

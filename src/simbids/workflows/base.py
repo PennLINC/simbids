@@ -39,8 +39,8 @@ import yaml
 from nipype.pipeline import engine as pe
 from packaging.version import Version
 
-from fmripost_template import config
-from fmripost_template.utils.utils import _get_wf_name, update_dict
+from simbids import config
+from simbids.utils.utils import _get_wf_name, update_dict
 
 
 def init_fmripost_template_wf():
@@ -115,9 +115,9 @@ def init_single_subject_wf(subject_id: str):
     from niworkflows.engine.workflows import LiterateWorkflow as Workflow
     from niworkflows.interfaces.bids import BIDSInfo
 
-    from fmripost_template.interfaces.bids import DerivativesDataSink
-    from fmripost_template.interfaces.reportlets import AboutSummary, SubjectSummary
-    from fmripost_template.utils.bids import collect_derivatives
+    from simbids.interfaces.bids import DerivativesDataSink
+    from simbids.interfaces.reportlets import AboutSummary, SubjectSummary
+    from simbids.utils.bids import collect_derivatives
 
     spaces = config.workflow.spaces
 
@@ -263,7 +263,7 @@ def init_single_run_wf(bold_file):
     """Set up a single-run workflow for fMRIPost-template."""
     from niworkflows.engine.workflows import LiterateWorkflow as Workflow
 
-    from fmripost_template.utils.bids import collect_derivatives, extract_entities
+    from simbids.utils.bids import collect_derivatives, extract_entities
 
     spaces = config.workflow.spaces
 

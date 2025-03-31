@@ -24,7 +24,7 @@
 
 import sys
 
-from fmripost_template import config
+from simbids import config
 
 
 def _build_parser(**kwargs):
@@ -39,7 +39,7 @@ def _build_parser(**kwargs):
 
     from packaging.version import Version
 
-    from fmripost_template.cli.version import check_latest, is_flagged
+    from simbids.cli.version import check_latest, is_flagged
 
     # from niworkflows.utils.spaces import OutputReferencesAction
 
@@ -543,7 +543,7 @@ def parse_args(args=None, namespace=None):
 
     # Validate raw inputs if running in raw+derivatives mode
     if derivatives and not opts.skip_bids_validation:
-        from fmripost_template.utils.bids import validate_input_dir
+        from simbids.utils.bids import validate_input_dir
 
         build_log.info(
             'Making sure the input data is BIDS compliant '

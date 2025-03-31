@@ -1,0 +1,11 @@
+"sub-*/ses-*/anat/*T1w.nii.gz":
+  anat:
+    - "{subid}_{sesid}_desc-preproc_T1w.nii.gz"
+    - "{subid}_{sesid}_desc-brain_mask.nii.gz"
+
+"sub-*/ses-*/anat/*T2w.nii.gz":
+  anat:
+    - "{subid}{sesid}_desc-preproc_T2w.nii.gz"
+    - "{subid}{sesid}_desc-brain_mask.nii.gz"
+
+

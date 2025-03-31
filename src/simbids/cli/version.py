@@ -28,7 +28,7 @@ from pathlib import Path
 
 import requests
 
-from fmripost_template import __version__
+from simbids import __version__
 
 RELEASE_EXPIRY_DAYS = 14
 DATE_FMT = '%Y%m%d'

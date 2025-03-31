@@ -32,7 +32,7 @@ from bids.layout import BIDSLayout
 from bids.utils import listify
 from niworkflows.utils.spaces import SpatialReferences
 
-from fmripost_template.data import load as load_data
+from simbids.data import load as load_data
 
 
 def extract_entities(file_list: str | list[str]) -> dict:
@@ -306,7 +306,7 @@ def write_derivative_description(input_dir, output_dir, dataset_links=None):
 
     from packaging.version import Version
 
-    from fmripost_template import __version__
+    from simbids import __version__
 
     DOWNLOAD_URL = f'https://github.com/nipreps/fmripost_template/archive/{__version__}.tar.gz'
 

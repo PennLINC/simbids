@@ -56,7 +56,7 @@ def _fslicense(tmp_path_factory):
 
 @pytest.fixture(scope='session')
 def base_config():
-    from fmripost_template.tests.tests import mock_config
+    from simbids.tests.tests import mock_config
 
     return mock_config
 
