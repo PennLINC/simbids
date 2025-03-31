@@ -19,9 +19,12 @@ classifiers = [
 ]
 dependencies = [
   "acres",
+  "datalad",
   "nipype",
+  "pandas",
   "pybids >= 0.15.6",
   "typer",
+  "yaml",
 ]
 dynamic = ["version"]
 
