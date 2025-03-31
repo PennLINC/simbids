@@ -109,13 +109,13 @@ def _build_parser(**kwargs):
             else:
                 raise parser.error(f'Path does not exist: <{value}>.')
 
-    verstr = f'fMRIPost-template v{config.environment.version}'
+    verstr = f'SimBIDS v{config.environment.version}'
     currentv = Version(config.environment.version)
     is_release = not any((currentv.is_devrelease, currentv.is_prerelease, currentv.is_postrelease))
 
     parser = ArgumentParser(
         description=(
-            'fMRIPost-template: fMRI POSTprocessing template workflow '
+            'SimBIDS: fMRI POSTprocessing template workflow '
             f'v{config.environment.version}'
         ),
         formatter_class=ArgumentDefaultsHelpFormatter,
@@ -149,7 +149,7 @@ def _build_parser(**kwargs):
         choices=['participant'],
         help=(
             "Processing stage to be run, only 'participant' in the case of "
-            'fMRIPost-template (see BIDS-Apps specification).'
+            'SimBIDS (see BIDS-Apps specification).'
         ),
     )
 
@@ -240,7 +240,7 @@ def _build_parser(**kwargs):
         action='store',
         type=_to_gb,
         metavar='MEMORY_MB',
-        help='Upper bound memory limit for fMRIPost-template processes',
+        help='Upper bound memory limit for SimBIDS processes',
     )
     g_perfm.add_argument(
         '--low-mem',
@@ -383,7 +383,7 @@ def _build_parser(**kwargs):
         action='store_true',
         default=False,
         help='Clears working directory of contents. Use of this flag is not '
-        'recommended when running concurrent processes of fMRIPost-template.',
+        'recommended when running concurrent processes of SimBIDS.',
     )
     g_other.add_argument(
         '--resource-monitor',
@@ -431,8 +431,8 @@ def _build_parser(**kwargs):
     if latest is not None and currentv < latest:
         print(
             f"""\
-You are using fMRIPost-template-{currentv},
-and a newer version of fMRIPost-template is available: {latest}.
+You are using SimBIDS-{currentv},
+and a newer version of SimBIDS is available: {latest}.
 Please check out our documentation about how and when to upgrade:
 https://fmriprep.readthedocs.io/en/latest/faq.html#upgrading""",
             file=sys.stderr,
@@ -443,7 +443,7 @@ https://fmriprep.readthedocs.io/en/latest/faq.html#upgrading""",
         _reason = _blist[1] or 'unknown'
         print(
             f"""\
-WARNING: Version {config.environment.version} of fMRIPost-template (current) has been FLAGGED
+WARNING: Version {config.environment.version} of SimBIDS (current) has been FLAGGED
 (reason: {_reason}).
 That means some severe flaw was found in it and we strongly
 discourage its usage.""",
@@ -517,7 +517,7 @@ def parse_args(args=None, namespace=None):
     if opts.clean_workdir and work_dir.exists():
         from niworkflows.utils.misc import clean_directory
 
-        build_log.info(f'Clearing previous fMRIPost-template working directory: {work_dir}')
+        build_log.info(f'Clearing previous SimBIDS working directory: {work_dir}')
         if not clean_directory(work_dir):
             build_log.warning(f'Could not clear all contents of working directory: {work_dir}')
 
@@ -529,7 +529,7 @@ def parse_args(args=None, namespace=None):
 
     # Ensure input and output folders are not the same
     if output_dir == bids_dir:
-        recommended_path = bids_dir / 'derivatives' / f'fmripost_template-{version.split("+")[0]}'
+        recommended_path = bids_dir / 'derivatives' / f'simbids-{version.split("+")[0]}'
         parser.error(
             'The selected output folder is the same as the input BIDS folder. '
             f'Please modify the output path (suggestion: {recommended_path}.'

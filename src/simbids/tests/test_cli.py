@@ -22,7 +22,7 @@
 #
 """Command-line interface tests.
 
-The tests in this file run the full fMRIPost-template workflow on test data
+The tests in this file run the full SimBIDS workflow on test data
 and check the outputs against a list of expected files.
 """
 
@@ -46,7 +46,7 @@ from simbids.utils.bids import write_derivative_description
 
 @pytest.mark.integration
 def test_ds000001(data_dir, output_dir, working_dir):
-    """Run fMRIPost-template on ds000001 fMRIPrep derivatives."""
+    """Run SimBIDS on ds000001 fMRIPrep derivatives."""
     test_name = 'test_ds000001'
 
     fmriprep_dir = download_test_data('ds000001', data_dir)
@@ -75,7 +75,7 @@ def _run_and_generate(test_name, parameters, test_main=True):
 
     if test_main:
         # This runs, but for some reason doesn't count toward coverage.
-        argv = ['fmripost_template'] + parameters
+        argv = ['simbids'] + parameters
         with patch.object(sys, 'argv', argv):
             with pytest.raises(SystemExit) as e:
                 run.main()

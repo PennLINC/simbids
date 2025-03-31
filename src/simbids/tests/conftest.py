@@ -34,7 +34,7 @@ import pytest
 @pytest.fixture(scope='session')
 def data_dir():
     """Grab data directory."""
-    test_data = importlib.resources.files('fmripost_template.tests') / 'data'
+    test_data = importlib.resources.files('simbids.tests') / 'data'
     with importlib.resources.as_file(test_data) as data:
         yield data
 
@@ -63,7 +63,7 @@ def base_config():
 
 @pytest.fixture(scope='session')
 def base_ignore_list():
-    """Create the standard ignore list used by fMRIPost-template."""
+    """Create the standard ignore list used by SimBIDS."""
     return [
         'code',
         'stimuli',

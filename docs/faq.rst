@@ -10,10 +10,10 @@ FAQ - Frequently Asked Questions
 
 
 *****************
-What is fMRIPost?
+What is SimBIDS?
 *****************
 
-fMRIPost workflows are BIDS Apps that ingress fMRI preprocessing derivative datasets.
+SimBIDS workflows are BIDS Apps that ingress fMRI preprocessing derivative datasets.
 They fall under the broader umbrella of NiPost workflows,
 which are pipelines that perform post-processing on BIDS-Derivative datasets.
 
