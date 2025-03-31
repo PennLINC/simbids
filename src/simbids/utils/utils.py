@@ -258,6 +258,7 @@ def create_skeleton_from_bids(bids_dir, n_subjects, n_sessions):
 
 class BIDSDumper(yaml.Dumper):
     """Custom YAML dumper that handles BIDS objects."""
+
     def represent_str(self, data):
         return self.represent_scalar('tag:yaml.org,2002:str', str(data), style='"')
 
@@ -267,9 +268,11 @@ class BIDSDumper(yaml.Dumper):
     def represent_object(self, data):
         return self.represent_str(str(data))
 
+
 # Register the custom dumpers
 BIDSDumper.add_representer(str, BIDSDumper.represent_str)
 BIDSDumper.add_representer(object, BIDSDumper.represent_object)
+
 
 def _convert_to_serializable(obj):
     """Convert BIDS objects to basic Python types for YAML serialization."""
