@@ -63,6 +63,7 @@ Source = "https://github.com/nipreps/simbids"
 
 [project.scripts]
 simbids = "simbids.cli.run:main"
+simbids-raw-mri = "simbids.cli.raw_mri:main"
 
 [tool.hatch.metadata]
 allow-direct-references = true
