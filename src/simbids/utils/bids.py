@@ -26,8 +26,6 @@ from __future__ import annotations
 
 import json
 import os
-import shutil
-import zipfile
 from copy import deepcopy
 from importlib import resources
 from pathlib import Path
@@ -130,7 +128,7 @@ def combine_entities(**entities):
     return f'_{"_".join([f"{lab}-{val}" for lab, val in entities.items()])}' if entities else ''
 
 
-def simulate_dataset(output_dir, yaml_file, zip_level, fill_files=False):
+def simulate_dataset(output_dir, yaml_file, fill_files=False, datalad_init=False):
     """Create a mock zipped input dataset with n_subjects, each with n_sessions.
 
     Parameters
@@ -139,28 +137,26 @@ def simulate_dataset(output_dir, yaml_file, zip_level, fill_files=False):
         The path to the output directory.
     yaml_file : str
         The name of the YAML file to use for the BIDS skeleton.
-    zip_level : {'subject', 'session', 'none'}
-        The level at which to zip the dataset.
     fill_files : bool, optional
         Whether to fill the files with random data.
+        Default is False.
+    datalad_init : bool, optional
+        Whether to initialize a datalad dataset in the output directory.
         Default is False.
 
     Returns
     -------
-    input_dataset : Path
-        The path containing the input dataset. Clone this dataset to
-        simulate what happens in a BABS initialization.
+    output_dir : Path
+        The path containing the output dataset.
     """
-    if zip_level not in ['subject', 'session', 'none']:
-        raise ValueError(f'Invalid zip level: {zip_level}')
 
     output_dir = Path(output_dir)
     dataset_dir = output_dir / 'simbids'
 
     # Load the YAML file from the package resources if it exists there,
     # otherwise load it from the local file system
-    if resources.files('simbids/data').joinpath(yaml_file).exists():
-        with resources.files('simbids/data').joinpath(yaml_file).open() as f:
+    if resources.files('simbids.data.bids_mri').joinpath(yaml_file).exists():
+        with resources.files('simbids.data.bids_mri').joinpath(yaml_file).open() as f:
             bids_skeleton = yaml.safe_load(f)
     elif Path(yaml_file).exists():
         with open(yaml_file) as f:
@@ -177,35 +173,11 @@ def simulate_dataset(output_dir, yaml_file, zip_level, fill_files=False):
             with open(file_path, 'wb') as f:
                 f.write(os.urandom(10 * 1024 * 1024))  # 10MB of random data
 
-    # Zip the dataset
-    if zip_level == 'subject':
-        for subject in dataset_dir.glob('sub-*'):
-            zip_path = output_dir / f'{subject.name}_simbids-1-0-1.zip'
-            with zipfile.ZipFile(zip_path, 'w') as zf:
-                for file_path in subject.rglob('*'):
-                    if file_path.is_file():
-                        arcname = f'simbids/{subject.name}/{file_path.relative_to(subject)}'
-                        zf.write(file_path, arcname)
-        shutil.rmtree(dataset_dir)
-    elif zip_level == 'session':
-        for subject in dataset_dir.glob('sub-*'):
-            for session in subject.glob('ses-*'):
-                zip_path = output_dir / f'{subject.name}_{session.name}_simbids-1-0-1.zip'
-                with zipfile.ZipFile(zip_path, 'w') as zf:
-                    for file_path in session.rglob('*'):
-                        if file_path.is_file():
-                            arcname = (
-                                f'simbids/{subject.name}/{session.name}/'
-                                f'{file_path.relative_to(session)}'
-                            )
-                            zf.write(file_path, arcname)
-        shutil.rmtree(dataset_dir)
+    if datalad_init:
+        # initialize a datalad dataset in input_dataset
+        dlapi.create(path=output_dir, force=True)
 
-    # initialize a datalad dataset in input_dataset
-    dlapi.create(path=output_dir, force=True)
-
-    # Datalad save the zip files
-    msg = 'Add zip files' if zip_level != 'none' else 'Add dataset'
-    dlapi.save(dataset=output_dir, message=msg)
+        # Datalad save the zip files
+        dlapi.save(dataset=output_dir, message='Add dataset')
 
     return output_dir

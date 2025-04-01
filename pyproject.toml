@@ -24,7 +24,7 @@ dependencies = [
   "pandas",
   "pybids >= 0.15.6",
   "typer",
-  "yaml",
+  "pyyaml",
 ]
 dynamic = ["version"]
 
@@ -82,6 +82,9 @@ exclude = [
   "src/simbids/tests/data",  # Large test data directory
   "tests/data", # Large test data directory
 ]
+
+[tool.hatch.build.targets.wheel.include]
+"simbids/data/**/*.yaml" = "simbids/data"
 
 [tool.hatch.envs.default]
 dependencies = [

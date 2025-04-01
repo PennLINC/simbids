@@ -24,6 +24,7 @@
 
 from . import (
     parser,
+    raw_mri,
     run,
     version,
     workflow,
@@ -31,6 +32,7 @@ from . import (
 
 __all__ = [
     'parser',
+    'raw_mri',
     'run',
     'version',
     'workflow',
