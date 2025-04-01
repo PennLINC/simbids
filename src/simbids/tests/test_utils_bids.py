@@ -1,7 +1,5 @@
 """Test the bids module."""
 
-import zipfile
-
 import pytest
 
 import simbids.utils.bids as sbids

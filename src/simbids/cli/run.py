@@ -30,11 +30,8 @@ EXITCODE: int = -1
 def main():
     """Entry point."""
     import gc
-    import sys
     from multiprocessing import Manager, Process
 
-    from simbids.cli.parser import parse_args
-    from simbids.cli.raw_mri import main as raw_mri_main
     from simbids.cli.workflow import build_workflow
 
     # Code Carbon
