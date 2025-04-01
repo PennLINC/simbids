@@ -84,8 +84,10 @@ exclude = [
   "tests/data", # Large test data directory
 ]
 
-[tool.hatch.build.targets.wheel.include]
-"simbids/data/**/*.yaml" = "simbids/data"
+[tool.hatch.build]
+artifacts = [
+  "src/simbids/data/bids_mri/*.yaml",
+]
 
 [tool.hatch.envs.default]
 dependencies = [
