@@ -29,10 +29,12 @@ SimBIDS workflows
 .. autofunction:: init_single_run_wf
 
 """
+
 import os
 import sys
 from collections import defaultdict
 
+import nipype.pipeline.engine as pe
 import yaml
 from niworkflows.engine.workflows import LiterateWorkflow as Workflow
 from niworkflows.interfaces.bids import BIDSInfo

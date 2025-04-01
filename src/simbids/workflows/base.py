@@ -142,8 +142,11 @@ def init_single_subject_wf(subject_id: str):
 
     if config.workflow.simulated_app == 'fmripost':
         from simbids.workflows.xcp_d.xcp_d import init_single_subject_fmripost_wf
+
         return init_single_subject_fmripost_wf(subject_id, subject_data)
+    elif config.workflow.simulated_app == 'qsiprep':
+        from simbids.workflows.qsiprep import init_single_subject_qsiprep_wf
+
+        return init_single_subject_qsiprep_wf(subject_id, subject_data)
     else:
         raise ValueError(f'Unknown application: {config.workflow.simulated_app}')
-
-
