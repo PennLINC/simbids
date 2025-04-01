@@ -31,7 +31,7 @@ from simbids.utils.bids import simulate_dataset
 LGR = logging.getLogger(__name__)
 
 # Get all the yaml files using importlib
-with resources.path('simbids.data.bids-mri', '') as bids_mri_path:
+with resources.path('simbids.data.bids_mri', '') as bids_mri_path:
     yaml_files = [f.name for f in bids_mri_path.glob('*.yaml')]
 
 
@@ -83,12 +83,12 @@ def main():
         config_path = Path(args.config_file)
         if not config_path.exists():
             raise FileNotFoundError(f'Config file {args.config_file} not found')
+        # For custom config files, pass the string path
+        simulate_dataset(args.bids_dir, str(config_path), args.fill_files, args.datalad_init)
     else:
         LGR.info(f'Using bundled config file: {args.config_file}')
-        config_path = resources.path('simbids.data.bids-mri', args.config_file)
-
-    # Create the raw MRI BIDS dataset
-    simulate_dataset(args.bids_dir, config_path, args.fill_files, args.datalad_init)
+        # For bundled config files, pass the filename directly
+        simulate_dataset(args.bids_dir, args.config_file, args.fill_files, args.datalad_init)
 
 
 if __name__ == '__main__':

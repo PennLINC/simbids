@@ -155,14 +155,16 @@ def simulate_dataset(output_dir, yaml_file, fill_files=False, datalad_init=False
 
     # Load the YAML file from the package resources if it exists there,
     # otherwise load it from the local file system
-    if resources.files('simbids.data.bids_mri').joinpath(yaml_file).exists():
-        with resources.files('simbids.data.bids_mri').joinpath(yaml_file).open() as f:
-            bids_skeleton = yaml.safe_load(f)
-    elif Path(yaml_file).exists():
-        with open(yaml_file) as f:
-            bids_skeleton = yaml.safe_load(f)
-    else:
-        raise FileNotFoundError(f'YAML file {yaml_file} not found')
+    with resources.path('simbids.data.bids_mri', '') as bids_mri_path:
+        yaml_path = bids_mri_path / yaml_file
+        if yaml_path.exists():
+            with open(yaml_path) as f:
+                bids_skeleton = yaml.safe_load(f)
+        elif Path(yaml_file).exists():
+            with open(yaml_file) as f:
+                bids_skeleton = yaml.safe_load(f)
+        else:
+            raise FileNotFoundError(f'YAML file {yaml_file} not found')
 
     # Create the qsiprep directory first
     generate_bids_skeleton(dataset_dir, bids_skeleton)
