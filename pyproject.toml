@@ -24,7 +24,7 @@ dependencies = [
   "pandas",
   "pybids >= 0.15.6",
   "typer",
-  "yaml",
+  "pyyaml",
 ]
 dynamic = ["version"]
 
@@ -63,6 +63,7 @@ Source = "https://github.com/nipreps/simbids"
 
 [project.scripts]
 simbids = "simbids.cli.run:main"
+simbids-raw-mri = "simbids.cli.raw_mri:main"
 
 [tool.hatch.metadata]
 allow-direct-references = true
@@ -81,6 +82,11 @@ packages = ["src/simbids"]
 exclude = [
   "src/simbids/tests/data",  # Large test data directory
   "tests/data", # Large test data directory
+]
+
+[tool.hatch.build]
+artifacts = [
+  "src/simbids/data/bids_mri/*.yaml",
 ]
 
 [tool.hatch.envs.default]

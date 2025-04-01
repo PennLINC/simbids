@@ -20,7 +20,7 @@
 #
 #     https://www.nipreps.org/community/licensing/
 #
-"""fMRI post-processing template workflow."""
+"""Simulated BIDS workflows."""
 
 from simbids import config
 
@@ -29,48 +29,20 @@ EXITCODE: int = -1
 
 def main():
     """Entry point."""
-
     import gc
-    import sys
     from multiprocessing import Manager, Process
-    from os import EX_SOFTWARE
 
-    from simbids.cli.parser import parse_args
     from simbids.cli.workflow import build_workflow
-
-    parse_args()
 
     # Code Carbon
     if config.execution.track_carbon:
-        from codecarbon import OfflineEmissionsTracker
-
-        country_iso_code = config.execution.country_code
-        config.loggers.workflow.log(25, 'CodeCarbon tracker started ...')
-        config.loggers.workflow.log(25, f'Using country_iso_code: {country_iso_code}')
-        config.loggers.workflow.log(25, f'Saving logs at: {config.execution.log_dir}')
-
-        tracker = OfflineEmissionsTracker(
-            output_dir=config.execution.log_dir, country_iso_code=country_iso_code
-        )
-        tracker.start()
+        pass
 
     if 'pdb' in config.execution.debug:
         from simbids.utils.debug import setup_exceptionhook
 
         setup_exceptionhook()
         config.nipype.plugin = 'Linear'
-
-    sentry_sdk = None
-    if not config.execution.notrack and not config.execution.debug:
-        import atexit
-
-        import sentry_sdk
-
-        from simbids.utils.telemetry import sentry_setup, setup_migas
-
-        sentry_setup()
-        setup_migas(init_ping=True)
-        atexit.register(migas_exit)
 
     # CRITICAL Save the config to a file. This is necessary because the execution graph
     # is built as a separate process to keep the memory footprint low. The most
@@ -105,37 +77,8 @@ def main():
     # state of SimBIDS).
     config.load(config_file)
 
-    if config.execution.reports_only:
-        sys.exit(int(EXITCODE > 0))
-
-    if simbids_wf and config.execution.write_graph:
-        simbids_wf.write_graph(graph2use='colored', format='svg', simple_form=True)
-
-    EXITCODE = EXITCODE or (simbids_wf is None) * EX_SOFTWARE
-    if EXITCODE != 0:
-        sys.exit(EXITCODE)
-
-    # Generate boilerplate
-    with Manager() as mgr:
-        from simbids.cli.workflow import build_boilerplate
-
-        p = Process(target=build_boilerplate, args=(str(config_file), simbids_wf))
-        p.start()
-        p.join()
-
-    if config.execution.boilerplate_only:
-        sys.exit(int(EXITCODE > 0))
-
     # Clean up master process before running workflow, which may create forks
     gc.collect()
-
-    # Sentry tracking
-    if sentry_sdk is not None:
-        with sentry_sdk.configure_scope() as scope:
-            scope.set_tag('run_uuid', config.execution.run_uuid)
-            scope.set_tag('npart', len(config.execution.participant_label))
-        sentry_sdk.add_breadcrumb(message='SimBIDS started', level='info')
-        sentry_sdk.capture_message('SimBIDS started', level='info')
 
     config.loggers.workflow.log(
         15,
@@ -145,70 +88,11 @@ def main():
     try:
         simbids_wf.run(**config.nipype.get_plugin())
     except Exception as e:
-        if not config.execution.notrack:
-            from simbids.utils.telemetry import process_crashfile
-
-            crashfolders = [
-                config.execution.output_dir / f'sub-{s}' / 'log' / config.execution.run_uuid
-                for s in config.execution.participant_label
-            ]
-            for crashfolder in crashfolders:
-                for crashfile in crashfolder.glob('crash*.*'):
-                    process_crashfile(crashfile)
-
-            if sentry_sdk is not None and 'Workflow did not execute cleanly' not in str(e):
-                sentry_sdk.capture_exception(e)
-
         config.loggers.workflow.critical('SimBIDS failed: %s', e)
         raise
 
     else:
         config.loggers.workflow.log(25, 'SimBIDS finished successfully!')
-        if sentry_sdk is not None:
-            success_message = 'SimBIDS finished without errors'
-            sentry_sdk.add_breadcrumb(message=success_message, level='info')
-            sentry_sdk.capture_message(success_message, level='info')
-
-    finally:
-        # Code Carbon
-        if config.execution.track_carbon:
-            emissions: float = tracker.stop()
-            config.loggers.workflow.log(25, 'CodeCarbon tracker has stopped.')
-            config.loggers.workflow.log(25, f'Saving logs at: {config.execution.log_dir}')
-            config.loggers.workflow.log(25, f'Carbon emissions: {emissions} kg')
-
-
-def migas_exit() -> None:
-    """Exit migas.
-
-    Send a final crumb to the migas server signaling if the run successfully completed
-    This function should be registered with `atexit` to run at termination.
-    """
-    import sys
-
-    from simbids.utils.telemetry import send_breadcrumb
-
-    global EXITCODE
-    migas_kwargs = {'status': 'C'}
-    # `sys` will not have these attributes unless an error has been handled
-    if hasattr(sys, 'last_type'):
-        migas_kwargs = {
-            'status': 'F',
-            'status_desc': 'Finished with error(s)',
-            'error_type': sys.last_type,
-            'error_desc': sys.last_value,
-        }
-    elif EXITCODE != 0:
-        migas_kwargs.update(
-            {
-                'status': 'F',
-                'status_desc': f'Completed with exitcode {EXITCODE}',
-            }
-        )
-    else:
-        migas_kwargs['status_desc'] = 'Success'
-
-    send_breadcrumb(**migas_kwargs)
 
 
 if __name__ == '__main__':

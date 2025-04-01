@@ -22,8 +22,6 @@
 #
 """Parser."""
 
-import sys
-
 from simbids import config
 
 
@@ -38,8 +36,6 @@ def _build_parser(**kwargs):
     from pathlib import Path
 
     from packaging.version import Version
-
-    from simbids.cli.version import check_latest, is_flagged
 
     # from niworkflows.utils.spaces import OutputReferencesAction
 
@@ -114,14 +110,12 @@ def _build_parser(**kwargs):
     is_release = not any((currentv.is_devrelease, currentv.is_prerelease, currentv.is_postrelease))
 
     parser = ArgumentParser(
-        description=(
-            f'SimBIDS: fMRI POSTprocessing template workflow v{config.environment.version}'
-        ),
+        description=(f'SimBIDS: Simulated BIDS data and workflows v{config.environment.version}'),
         formatter_class=ArgumentDefaultsHelpFormatter,
         **kwargs,
     )
     PathExists = partial(_path_exists, parser=parser)
-    IsFile = partial(_is_file, parser=parser)
+    # IsFile = partial(_is_file, parser=parser)
     PositiveInt = partial(_min_one, parser=parser)
     BIDSFilter = partial(_bids_filter, parser=parser)
 
@@ -172,12 +166,6 @@ def _build_parser(**kwargs):
         ),
     )
     g_bids.add_argument(
-        '-t',
-        '--task-id',
-        action='store',
-        help='Select a specific task to be processed',
-    )
-    g_bids.add_argument(
         '--bids-filter-file',
         dest='bids_filters',
         action='store',
@@ -201,16 +189,6 @@ def _build_parser(**kwargs):
             'Search PATH(s) for pre-computed derivatives. '
             'These may be provided as named folders '
             '(e.g., `--derivatives smriprep=/path/to/smriprep`).'
-        ),
-    )
-    g_bids.add_argument(
-        '--bids-database-dir',
-        metavar='PATH',
-        type=Path,
-        help=(
-            'Path to a PyBIDS database folder, for faster indexing '
-            '(especially useful for large datasets). '
-            'Will be created if not present.'
         ),
     )
 
@@ -241,122 +219,12 @@ def _build_parser(**kwargs):
         metavar='MEMORY_MB',
         help='Upper bound memory limit for SimBIDS processes',
     )
-    g_perfm.add_argument(
-        '--low-mem',
-        action='store_true',
-        help='Attempt to reduce memory usage (will increase disk usage in working directory)',
-    )
-    g_perfm.add_argument(
-        '--use-plugin',
-        '--nipype-plugin-file',
-        action='store',
-        metavar='FILE',
-        type=IsFile,
-        help='Nipype plugin configuration file',
-    )
-    g_perfm.add_argument(
-        '--sloppy',
-        action='store_true',
-        default=False,
-        help='Use low-quality tools for speed - TESTING ONLY',
-    )
-
-    g_subset = parser.add_argument_group('Options for performing only a subset of the workflow')
-    g_subset.add_argument(
-        '--boilerplate-only',
-        '--boilerplate_only',
-        action='store_true',
-        default=False,
-        help='Generate boilerplate only',
-    )
-    g_subset.add_argument(
-        '--reports-only',
-        action='store_true',
-        default=False,
-        help=(
-            "Only generate reports, don't run workflows. "
-            'This will only rerun report aggregation, not reportlet generation for specific '
-            'nodes.'
-        ),
-    )
-
-    g_conf = parser.add_argument_group('Workflow configuration')
-    g_conf.add_argument(
-        '--ignore',
-        required=False,
-        action='store',
-        nargs='+',
-        default=['fieldmaps'],
-        choices=['fieldmaps', 'slicetiming', 'fmap-jacobian'],
-        help=(
-            'Ignore selected aspects of the input dataset to disable corresponding '
-            'parts of the resampling workflow (a space delimited list)'
-        ),
-    )
-    # Disable output spaces until warping works
-    # g_conf.add_argument(
-    #     '--output-spaces',
-    #     nargs='*',
-    #     action=OutputReferencesAction,
-    #     help="""\
-    # Standard and non-standard spaces to resample denoised functional images to. \
-    # Standard spaces may be specified by the form \
-    # ``<SPACE>[:cohort-<label>][:res-<resolution>][...]``, where ``<SPACE>`` is \
-    # a keyword designating a spatial reference, and may be followed by optional, \
-    # colon-separated parameters. \
-    # Non-standard spaces imply specific orientations and sampling grids. \
-    # For further details, please check out \
-    # https://fmriprep.readthedocs.io/en/%s/spaces.html"""
-    #    % (currentv.base_version if is_release else 'latest'),
-    # )
-    g_conf.add_argument(
-        '--dummy-scans',
-        required=False,
-        action='store',
-        default=None,
-        type=int,
-        help='Number of nonsteady-state volumes. Overrides automatic detection.',
-    )
-    g_conf.add_argument(
-        '--random-seed',
-        dest='_random_seed',
-        action='store',
-        type=int,
-        default=None,
-        help='Initialize the random seed for the workflow',
-    )
 
     g_outputs = parser.add_argument_group('Options for modulating outputs')
     g_outputs.add_argument(
-        '--md-only-boilerplate',
-        action='store_true',
-        default=False,
-        help='Skip generation of HTML and LaTeX formatted citation with pandoc',
-    )
-    g_outputs.add_argument(
-        '--aggregate-session-reports',
-        dest='aggr_ses_reports',
-        action='store',
-        type=PositiveInt,
-        default=4,
-        help=(
-            "Maximum number of sessions aggregated in one subject's visual report. "
-            'If exceeded, visual reports are split by session.'
-        ),
-    )
-
-    g_carbon = parser.add_argument_group('Options for carbon usage tracking')
-    g_carbon.add_argument(
-        '--track-carbon',
-        action='store_true',
-        help='Tracks power draws using CodeCarbon package',
-    )
-    g_carbon.add_argument(
-        '--country-code',
-        action='store',
-        default='CAN',
-        type=str,
-        help='Country ISO code used by carbon trackers',
+        '--processing-level',
+        choices=['participant', 'session'],
+        help='Processing level to be run, only "participant" or "session" in the case of SimBIDS',
     )
 
     g_other = parser.add_argument_group('Other options')
@@ -370,38 +238,11 @@ def _build_parser(**kwargs):
         help='Increases log verbosity for each occurrence, debug level is -vvv',
     )
     g_other.add_argument(
-        '-w',
-        '--work-dir',
-        action='store',
-        type=Path,
-        default=Path('work').absolute(),
-        help='Path where intermediate results should be stored',
-    )
-    g_other.add_argument(
-        '--clean-workdir',
-        action='store_true',
-        default=False,
-        help='Clears working directory of contents. Use of this flag is not '
-        'recommended when running concurrent processes of SimBIDS.',
-    )
-    g_other.add_argument(
-        '--resource-monitor',
-        action='store_true',
-        default=False,
-        help="Enable Nipype's resource monitoring to keep track of memory and CPU usage",
-    )
-    g_other.add_argument(
         '--config-file',
         action='store',
         metavar='FILE',
         help='Use pre-generated configuration file. Values in file will be overridden '
         'by command-line arguments.',
-    )
-    g_other.add_argument(
-        '--write-graph',
-        action='store_true',
-        default=False,
-        help='Write workflow graph.',
     )
     g_other.add_argument(
         '--stop-on-first-crash',
@@ -410,44 +251,12 @@ def _build_parser(**kwargs):
         help='Force stopping on first crash, even if a work directory was specified.',
     )
     g_other.add_argument(
-        '--notrack',
-        action='store_true',
-        default=False,
-        help='Opt out of sending tracking information of this run to '
-        'the NiPreps developers. This information helps to '
-        'improve NiPreps and provides an indicator of real '
-        'world usage crucial for obtaining funding.',
-    )
-    g_other.add_argument(
         '--debug',
         action='store',
         nargs='+',
         choices=config.DEBUG_MODES + ('all',),
         help="Debug mode(s) to enable. 'all' is alias for all available modes.",
     )
-
-    latest = check_latest()
-    if latest is not None and currentv < latest:
-        print(
-            f"""\
-You are using SimBIDS-{currentv},
-and a newer version of SimBIDS is available: {latest}.
-Please check out our documentation about how and when to upgrade:
-https://fmriprep.readthedocs.io/en/latest/faq.html#upgrading""",
-            file=sys.stderr,
-        )
-
-    _blist = is_flagged()
-    if _blist[0]:
-        _reason = _blist[1] or 'unknown'
-        print(
-            f"""\
-WARNING: Version {config.environment.version} of SimBIDS (current) has been FLAGGED
-(reason: {_reason}).
-That means some severe flaw was found in it and we strongly
-discourage its usage.""",
-            file=sys.stderr,
-        )
 
     return parser
 
@@ -468,57 +277,14 @@ def parse_args(args=None, namespace=None):
     config.execution.log_level = int(max(25 - 5 * opts.verbose_count, logging.DEBUG))
     config.from_dict(vars(opts), init=['nipype'])
 
-    if not config.execution.notrack:
-        import importlib.util
-
-        if importlib.util.find_spec('sentry_sdk') is None:
-            config.execution.notrack = True
-            config.loggers.cli.warning('Telemetry disabled because sentry_sdk is not installed.')
-        else:
-            config.loggers.cli.info(
-                'Telemetry system to collect crashes and errors is enabled '
-                '- thanks for your feedback!. Use option ``--notrack`` to opt out.'
-            )
-
     # Retrieve logging level
     build_log = config.loggers.cli
-
-    # Load base plugin_settings from file if --use-plugin
-    if opts.use_plugin is not None:
-        import yaml
-
-        with open(opts.use_plugin) as f:
-            plugin_settings = yaml.safe_load(f)
-        _plugin = plugin_settings.get('plugin')
-        if _plugin:
-            config.nipype.plugin = _plugin
-            config.nipype.plugin_args = plugin_settings.get('plugin_args', {})
-            config.nipype.nprocs = opts.nprocs or config.nipype.plugin_args.get(
-                'n_procs', config.nipype.nprocs
-            )
-
-    # Resource management options
-    # Note that we're making strong assumptions about valid plugin args
-    # This may need to be revisited if people try to use batch plugins
-    if 1 < config.nipype.nprocs < config.nipype.omp_nthreads:
-        build_log.warning(
-            f'Per-process threads (--omp-nthreads={config.nipype.omp_nthreads}) exceed '
-            f'total threads (--nthreads/--n_cpus={config.nipype.nprocs})'
-        )
 
     bids_dir = config.execution.bids_dir
     output_dir = config.execution.output_dir
     derivatives = config.execution.derivatives
     work_dir = config.execution.work_dir
     version = config.environment.version
-
-    # Wipe out existing work_dir
-    if opts.clean_workdir and work_dir.exists():
-        from niworkflows.utils.misc import clean_directory
-
-        build_log.info(f'Clearing previous SimBIDS working directory: {work_dir}')
-        if not clean_directory(work_dir):
-            build_log.warning(f'Could not clear all contents of working directory: {work_dir}')
 
     # Update the config with an empty dict to trigger initialization of all config
     # sections (we used `init=False` above).
