@@ -26,12 +26,229 @@ from __future__ import annotations
 
 import json
 import os
+from collections import defaultdict
 from copy import deepcopy
 from importlib import resources
 from pathlib import Path
 
 import datalad.api as dlapi
 import yaml
+from bids.layout import BIDSLayout, Query
+from niworkflows.utils.spaces import SpatialReferences
+
+from simbids.data import load as load_data
+
+
+def collect_derivatives(
+    raw_dataset: Path | BIDSLayout | None,
+    derivatives_dataset: Path | BIDSLayout | None,
+    entities: dict | None,
+    fieldmap_id: str | None,
+    spec: dict | None = None,
+    patterns: list[str] | None = None,
+    allow_multiple: bool = False,
+    spaces: SpatialReferences | None = None,
+) -> dict:
+    """Gather existing derivatives and compose a cache.
+
+    TODO: Ingress 'spaces' and search for BOLD+mask in the spaces *or* xfms.
+
+    Parameters
+    ----------
+    raw_dataset : Path | BIDSLayout | None
+        Path to the raw dataset or a BIDSLayout instance.
+    derivatives_dataset : Path | BIDSLayout
+        Path to the derivatives dataset or a BIDSLayout instance.
+    entities : dict
+        Dictionary of entities to use for filtering.
+    fieldmap_id : str | None
+        Fieldmap ID to use for filtering.
+    spec : dict | None
+        Specification dictionary.
+    patterns : list[str] | None
+        List of patterns to use for filtering.
+    allow_multiple : bool
+        Allow multiple files to be returned for a given query.
+    spaces : SpatialReferences | None
+        Spatial references to select for.
+
+    Returns
+    -------
+    derivs_cache : dict
+        Dictionary with keys corresponding to the derivatives and values
+        corresponding to the file paths.
+    """
+    if not entities:
+        entities = {}
+
+    if spec is None or patterns is None:
+        if bids_app == 'qsirecon':
+            _spec = json.loads(load_data.readable('io_spec_qsirecon.json').read_text())
+        elif bids_app == 'fmriprep':
+            _spec = json.loads(load_data.readable('io_spec_fmriprep.json').read_text())
+        else:
+            _spec = json.loads(load_data.readable('io_spec.json').read_text())
+
+        if spec is None:
+            spec = _spec['queries']
+
+        if patterns is None:
+            patterns = _spec['patterns']
+
+    # Search for derivatives data
+    derivs_cache = defaultdict(list, {})
+    if derivatives_dataset is not None:
+        layout = derivatives_dataset
+        if isinstance(layout, Path):
+            layout = BIDSLayout(
+                layout,
+                config=['bids', 'derivatives'],
+                validate=False,
+            )
+
+        for k, q in spec['derivatives'].items():
+            if k.startswith('anat'):
+                # Allow anatomical derivatives at session level or subject level
+                query = {
+                    **{'subject': entities['subject'], 'session': [entities.get('session'), None]},
+                    **q,
+                }
+            else:
+                # Combine entities with query. Query values override file entities.
+                query = {**entities, **q}
+
+            item = layout.get(return_type='filename', **query)
+            if k.startswith('anat') and not item:
+                # If the anatomical derivative is not found, try to find it
+                # across sessions
+                query = {**{'subject': entities['subject'], 'session': [Query.ANY]}, **q}
+                item = layout.get(return_type='filename', **query)
+
+            if not item:
+                derivs_cache[k] = None
+            elif not allow_multiple and len(item) > 1 and k.startswith('anat'):
+                # Raise an error if multiple derivatives are found from different sessions
+                item_sessions = [layout.get_file(f).entities['session'] for f in item]
+                if len(set(item_sessions)) > 1:
+                    raise ValueError(f'Multiple anatomical derivatives found for {k}: {item}')
+
+                # Anatomical derivatives are allowed to have multiple files (e.g., T1w and T2w)
+                # but we just grab the first one
+                derivs_cache[k] = item[0]
+            elif not allow_multiple and len(item) > 1:
+                raise ValueError(f'Multiple files found for {k}: {item}')
+            else:
+                derivs_cache[k] = item[0] if len(item) == 1 else item
+
+        for k, q in spec['transforms'].items():
+            if k.startswith('anat'):
+                # Allow anatomical derivatives at session level or subject level
+                query = {
+                    **{'subject': entities['subject'], 'session': [entities.get('session'), None]},
+                    **q,
+                }
+            else:
+                # Combine entities with query. Query values override file entities.
+                query = {**entities, **q}
+
+            if k == 'boldref2fmap':
+                query['to'] = fieldmap_id
+
+            item = layout.get(return_type='filename', **query)
+            if k.startswith('anat') and not item:
+                # If the anatomical derivative is not found, try to find it
+                # across sessions
+                query = {**{'subject': entities['subject'], 'session': [Query.ANY]}, **q}
+                item = layout.get(return_type='filename', **query)
+
+            if not item:
+                derivs_cache[k] = None
+            elif not allow_multiple and len(item) > 1 and k.startswith('anat'):
+                # Anatomical derivatives are allowed to have multiple files (e.g., T1w and T2w)
+                # but we just grab the first one
+                derivs_cache[k] = item[0]
+            elif not allow_multiple and len(item) > 1:
+                raise ValueError(f'Multiple files found for {k}: {item}')
+            else:
+                derivs_cache[k] = item[0] if len(item) == 1 else item
+
+    # Search for requested output spaces
+    if spaces is not None:
+        # Put the output-space files/transforms in lists so they can be parallelized with
+        # template_iterator_wf.
+        spaces_found, bold_outputspaces, bold_mask_outputspaces = [], [], []
+        for space in spaces.references:
+            # First try to find processed BOLD+mask files in the requested space
+            bold_query = {**entities, **spec['derivatives']['bold_mni152nlin6asym']}
+            bold_query['space'] = space.space
+            bold_query = {**bold_query, **space.spec}
+            bold_item = layout.get(return_type='filename', **bold_query)
+            bold_outputspaces.append(bold_item[0] if bold_item else None)
+
+            mask_query = {**entities, **spec['derivatives']['bold_mask_mni152nlin6asym']}
+            mask_query['space'] = space.space
+            mask_query = {**mask_query, **space.spec}
+            mask_item = layout.get(return_type='filename', **mask_query)
+            bold_mask_outputspaces.append(mask_item[0] if mask_item else None)
+
+            spaces_found.append(bool(bold_item) and bool(mask_item))
+
+        if all(spaces_found):
+            derivs_cache['bold_outputspaces'] = bold_outputspaces
+            derivs_cache['bold_mask_outputspaces'] = bold_mask_outputspaces
+        else:
+            # The requested spaces were not found, try to find transforms
+            print(
+                'Not all requested output spaces were found. '
+                'We will try to find transforms to these spaces and apply them to the BOLD data.',
+                flush=True,
+            )
+
+        spaces_found, anat2outputspaces_xfm = [], []
+        for space in spaces.references:
+            base_file = derivs_cache['anat2mni152nlin6asym']
+            base_file = layout.get_file(base_file)
+            # Now try to find transform to the requested space, using the
+            # entities from the transform to MNI152NLin6Asym
+            anat2space_query = base_file.entities
+            anat2space_query['to'] = space.space
+            item = layout.get(return_type='filename', **anat2space_query)
+            anat2outputspaces_xfm.append(item[0] if item else None)
+            spaces_found.append(bool(item))
+
+        if all(spaces_found):
+            derivs_cache['anat2outputspaces_xfm'] = anat2outputspaces_xfm
+        else:
+            missing_spaces = ', '.join(
+                [
+                    s.space
+                    for s, found in zip(spaces.references, spaces_found, strict=False)
+                    if not found
+                ]
+            )
+            raise ValueError(
+                f'Transforms to the following requested spaces not found: {missing_spaces}.'
+            )
+
+    # Search for raw BOLD data
+    if not derivs_cache and raw_dataset is not None:
+        if isinstance(raw_dataset, Path):
+            raw_layout = BIDSLayout(raw_dataset, config=['bids'], validate=False)
+        else:
+            raw_layout = raw_dataset
+
+        for k, q in spec['raw'].items():
+            # Combine entities with query. Query values override file entities.
+            query = {**entities, **q}
+            item = raw_layout.get(return_type='filename', **query)
+            if not item:
+                derivs_cache[k] = None
+            elif not allow_multiple and len(item) > 1:
+                raise ValueError(f'Multiple files found for {k}: {item}')
+            else:
+                derivs_cache[k] = item[0] if len(item) == 1 else item
+
+    return derivs_cache
 
 
 def generate_bids_skeleton(target_path, bids_config):

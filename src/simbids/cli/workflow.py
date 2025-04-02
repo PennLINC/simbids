@@ -36,8 +36,6 @@ def build_workflow(config_file, retval):
     """Create the Nipype Workflow that supports the whole execution graph."""
     from pathlib import Path
 
-    from fmriprep.utils.bids import check_pipeline_version
-    from fmriprep.utils.misc import check_deps
     from niworkflows.utils.bids import collect_participants
     from pkg_resources import resource_filename as pkgrf
 
@@ -63,15 +61,6 @@ def build_workflow(config_file, retval):
         banner += notice_path.read_text().splitlines(keepends=False)[1:]
         banner += ['#' * len(banner[1])]
     build_log.log(25, f'\n{" " * 9}'.join(banner))
-
-    # warn if older results exist: check for dataset_description.json in output folder
-    msg = check_pipeline_version(
-        'SimBIDS',
-        version,
-        output_dir / 'dataset_description.json',
-    )
-    if msg is not None:
-        build_log.warning(msg)
 
     # Please note this is the input folder's dataset_description.json
     dset_desc_path = config.execution.bids_dir / 'dataset_description.json'
@@ -103,6 +92,7 @@ def build_workflow(config_file, retval):
         "Building SimBIDS's workflow:",
         f'BIDS dataset path: {config.execution.bids_dir}.',
         f'Participant list: {subject_list}.',
+        f'BIDS-App: {config.workflow.bids_app}.',
         f'Run identifier: {config.execution.run_uuid}.',
         f'Output spaces: {config.execution.output_spaces}.',
     ]
@@ -113,16 +103,6 @@ def build_workflow(config_file, retval):
     build_log.log(25, f'\n{" " * 11}* '.join(init_msg))
 
     retval['workflow'] = init_simbids_wf()
-
-    # Check workflow for missing commands
-    missing = check_deps(retval['workflow'])
-    if missing:
-        build_log.critical(
-            'Cannot run SimBIDS. Missing dependencies:%s',
-            '\n\t* '.join([''] + [f'{cmd} (Interface: {iface})' for iface, cmd in missing]),
-        )
-        retval['return_code'] = 127  # 127 == command not found.
-        return retval
 
     config.to_filename(config_file)
     build_log.info(

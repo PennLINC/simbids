@@ -76,7 +76,7 @@
       "TxRefAmp": 206.955
     "suffix": "T2w"
   "dwi":
-  - "direction": "AP"
+  - "dir": "AP"
     "extension": ".bval"
     "metadata":
       "AcquisitionMatrixPE": "122"
@@ -228,7 +228,7 @@
       "TxRefAmp": 206.955
     "run": "01"
     "suffix": "dwi"
-  - "direction": "AP"
+  - "dir": "AP"
     "extension": ".bvec"
     "metadata":
       "AcquisitionMatrixPE": "122"
@@ -380,12 +380,12 @@
       "TxRefAmp": 206.955
     "run": "01"
     "suffix": "dwi"
-  - "direction": "AP"
+  - "dir": "AP"
     "extension": ".json"
     "metadata": {}
     "run": "01"
     "suffix": "dwi"
-  - "direction": "AP"
+  - "dir": "AP"
     "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "122"
@@ -537,7 +537,7 @@
       "TxRefAmp": 206.955
     "run": "01"
     "suffix": "dwi"
-  - "direction": "AP"
+  - "dir": "AP"
     "extension": ".bval"
     "metadata":
       "AcquisitionMatrixPE": "122"
@@ -689,7 +689,7 @@
       "TxRefAmp": 206.955
     "run": "02"
     "suffix": "dwi"
-  - "direction": "AP"
+  - "dir": "AP"
     "extension": ".bvec"
     "metadata":
       "AcquisitionMatrixPE": "122"
@@ -841,12 +841,12 @@
       "TxRefAmp": 206.955
     "run": "02"
     "suffix": "dwi"
-  - "direction": "AP"
+  - "dir": "AP"
     "extension": ".json"
     "metadata": {}
     "run": "02"
     "suffix": "dwi"
-  - "direction": "AP"
+  - "dir": "AP"
     "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "122"
@@ -998,7 +998,7 @@
       "TxRefAmp": 206.955
     "run": "02"
     "suffix": "dwi"
-  - "direction": "PA"
+  - "dir": "PA"
     "extension": ".bval"
     "metadata":
       "AcquisitionMatrixPE": "122"
@@ -1150,7 +1150,7 @@
       "TxRefAmp": 206.955
     "run": "01"
     "suffix": "dwi"
-  - "direction": "PA"
+  - "dir": "PA"
     "extension": ".bvec"
     "metadata":
       "AcquisitionMatrixPE": "122"
@@ -1302,12 +1302,12 @@
       "TxRefAmp": 206.955
     "run": "01"
     "suffix": "dwi"
-  - "direction": "PA"
+  - "dir": "PA"
     "extension": ".json"
     "metadata": {}
     "run": "01"
     "suffix": "dwi"
-  - "direction": "PA"
+  - "dir": "PA"
     "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "122"
@@ -1459,7 +1459,7 @@
       "TxRefAmp": 206.955
     "run": "01"
     "suffix": "dwi"
-  - "direction": "PA"
+  - "dir": "PA"
     "extension": ".bval"
     "metadata":
       "AcquisitionMatrixPE": "122"
@@ -1611,7 +1611,7 @@
       "TxRefAmp": 206.955
     "run": "02"
     "suffix": "dwi"
-  - "direction": "PA"
+  - "dir": "PA"
     "extension": ".bvec"
     "metadata":
       "AcquisitionMatrixPE": "122"
@@ -1763,12 +1763,12 @@
       "TxRefAmp": 206.955
     "run": "02"
     "suffix": "dwi"
-  - "direction": "PA"
+  - "dir": "PA"
     "extension": ".json"
     "metadata": {}
     "run": "02"
     "suffix": "dwi"
-  - "direction": "PA"
+  - "dir": "PA"
     "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "122"
@@ -1921,12 +1921,12 @@
     "run": "02"
     "suffix": "dwi"
   "func":
-  - "direction": "AP"
+  - "dir": "AP"
     "extension": ".json"
     "metadata": {}
     "suffix": "bold"
     "task": "rest"
-  - "direction": "AP"
+  - "dir": "AP"
     "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "104"
@@ -2080,12 +2080,12 @@
       "TxRefAmp": 206.955
     "suffix": "bold"
     "task": "rest"
-  - "direction": "PA"
+  - "dir": "PA"
     "extension": ".json"
     "metadata": {}
     "suffix": "bold"
     "task": "rest"
-  - "direction": "PA"
+  - "dir": "PA"
     "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "104"
@@ -2319,7 +2319,7 @@
       "TxRefAmp": 215.016
     "suffix": "T2w"
   "dwi":
-  - "direction": "AP"
+  - "dir": "AP"
     "extension": ".bval"
     "metadata":
       "AcquisitionMatrixPE": "122"
@@ -2475,7 +2475,7 @@
       "TxRefAmp": 216.389
     "run": "01"
     "suffix": "dwi"
-  - "direction": "AP"
+  - "dir": "AP"
     "extension": ".bvec"
     "metadata":
       "AcquisitionMatrixPE": "122"
@@ -2631,12 +2631,12 @@
       "TxRefAmp": 216.389
     "run": "01"
     "suffix": "dwi"
-  - "direction": "AP"
+  - "dir": "AP"
     "extension": ".json"
     "metadata": {}
     "run": "01"
     "suffix": "dwi"
-  - "direction": "AP"
+  - "dir": "AP"
     "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "122"
@@ -2792,7 +2792,7 @@
       "TxRefAmp": 216.389
     "run": "01"
     "suffix": "dwi"
-  - "direction": "AP"
+  - "dir": "AP"
     "extension": ".bval"
     "metadata":
       "AcquisitionMatrixPE": "122"
@@ -2948,7 +2948,7 @@
       "TxRefAmp": 216.389
     "run": "02"
     "suffix": "dwi"
-  - "direction": "AP"
+  - "dir": "AP"
     "extension": ".bvec"
     "metadata":
       "AcquisitionMatrixPE": "122"
@@ -3104,12 +3104,12 @@
       "TxRefAmp": 216.389
     "run": "02"
     "suffix": "dwi"
-  - "direction": "AP"
+  - "dir": "AP"
     "extension": ".json"
     "metadata": {}
     "run": "02"
     "suffix": "dwi"
-  - "direction": "AP"
+  - "dir": "AP"
     "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "122"
@@ -3265,7 +3265,7 @@
       "TxRefAmp": 216.389
     "run": "02"
     "suffix": "dwi"
-  - "direction": "PA"
+  - "dir": "PA"
     "extension": ".bval"
     "metadata":
       "AcquisitionMatrixPE": "122"
@@ -3421,7 +3421,7 @@
       "TxRefAmp": 216.389
     "run": "01"
     "suffix": "dwi"
-  - "direction": "PA"
+  - "dir": "PA"
     "extension": ".bvec"
     "metadata":
       "AcquisitionMatrixPE": "122"
@@ -3577,12 +3577,12 @@
       "TxRefAmp": 216.389
     "run": "01"
     "suffix": "dwi"
-  - "direction": "PA"
+  - "dir": "PA"
     "extension": ".json"
     "metadata": {}
     "run": "01"
     "suffix": "dwi"
-  - "direction": "PA"
+  - "dir": "PA"
     "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "122"
@@ -3738,7 +3738,7 @@
       "TxRefAmp": 216.389
     "run": "01"
     "suffix": "dwi"
-  - "direction": "PA"
+  - "dir": "PA"
     "extension": ".bval"
     "metadata":
       "AcquisitionMatrixPE": "122"
@@ -3894,7 +3894,7 @@
       "TxRefAmp": 216.389
     "run": "02"
     "suffix": "dwi"
-  - "direction": "PA"
+  - "dir": "PA"
     "extension": ".bvec"
     "metadata":
       "AcquisitionMatrixPE": "122"
@@ -4050,12 +4050,12 @@
       "TxRefAmp": 216.389
     "run": "02"
     "suffix": "dwi"
-  - "direction": "PA"
+  - "dir": "PA"
     "extension": ".json"
     "metadata": {}
     "run": "02"
     "suffix": "dwi"
-  - "direction": "PA"
+  - "dir": "PA"
     "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "122"
@@ -4361,12 +4361,12 @@
       "TxRefAmp": 216.389
     "suffix": "bold"
     "task": "partlycloudy"
-  - "direction": "AP"
+  - "dir": "AP"
     "extension": ".json"
     "metadata": {}
     "suffix": "bold"
     "task": "rest"
-  - "direction": "AP"
+  - "dir": "AP"
     "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "104"
@@ -4523,12 +4523,12 @@
       "TxRefAmp": 216.389
     "suffix": "bold"
     "task": "rest"
-  - "direction": "PA"
+  - "dir": "PA"
     "extension": ".json"
     "metadata": {}
     "suffix": "bold"
     "task": "rest"
-  - "direction": "PA"
+  - "dir": "PA"
     "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "104"
@@ -4765,7 +4765,7 @@
       "TxRefAmp": 216.744
     "suffix": "T2w"
   "dwi":
-  - "direction": "AP"
+  - "dir": "AP"
     "extension": ".bval"
     "metadata":
       "AcquisitionMatrixPE": "122"
@@ -4918,7 +4918,7 @@
       "TxRefAmp": 216.744
     "run": "01"
     "suffix": "dwi"
-  - "direction": "AP"
+  - "dir": "AP"
     "extension": ".bvec"
     "metadata":
       "AcquisitionMatrixPE": "122"
@@ -5071,12 +5071,12 @@
       "TxRefAmp": 216.744
     "run": "01"
     "suffix": "dwi"
-  - "direction": "AP"
+  - "dir": "AP"
     "extension": ".json"
     "metadata": {}
     "run": "01"
     "suffix": "dwi"
-  - "direction": "AP"
+  - "dir": "AP"
     "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "122"
@@ -5229,7 +5229,7 @@
       "TxRefAmp": 216.744
     "run": "01"
     "suffix": "dwi"
-  - "direction": "AP"
+  - "dir": "AP"
     "extension": ".bval"
     "metadata":
       "AcquisitionMatrixPE": "122"
@@ -5382,7 +5382,7 @@
       "TxRefAmp": 216.744
     "run": "02"
     "suffix": "dwi"
-  - "direction": "AP"
+  - "dir": "AP"
     "extension": ".bvec"
     "metadata":
       "AcquisitionMatrixPE": "122"
@@ -5535,12 +5535,12 @@
       "TxRefAmp": 216.744
     "run": "02"
     "suffix": "dwi"
-  - "direction": "AP"
+  - "dir": "AP"
     "extension": ".json"
     "metadata": {}
     "run": "02"
     "suffix": "dwi"
-  - "direction": "AP"
+  - "dir": "AP"
     "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "122"
@@ -5693,7 +5693,7 @@
       "TxRefAmp": 216.744
     "run": "02"
     "suffix": "dwi"
-  - "direction": "PA"
+  - "dir": "PA"
     "extension": ".bval"
     "metadata":
       "AcquisitionMatrixPE": "122"
@@ -5846,7 +5846,7 @@
       "TxRefAmp": 216.744
     "run": "01"
     "suffix": "dwi"
-  - "direction": "PA"
+  - "dir": "PA"
     "extension": ".bvec"
     "metadata":
       "AcquisitionMatrixPE": "122"
@@ -5999,12 +5999,12 @@
       "TxRefAmp": 216.744
     "run": "01"
     "suffix": "dwi"
-  - "direction": "PA"
+  - "dir": "PA"
     "extension": ".json"
     "metadata": {}
     "run": "01"
     "suffix": "dwi"
-  - "direction": "PA"
+  - "dir": "PA"
     "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "122"
@@ -6157,7 +6157,7 @@
       "TxRefAmp": 216.744
     "run": "01"
     "suffix": "dwi"
-  - "direction": "PA"
+  - "dir": "PA"
     "extension": ".bval"
     "metadata":
       "AcquisitionMatrixPE": "122"
@@ -6310,7 +6310,7 @@
       "TxRefAmp": 216.744
     "run": "02"
     "suffix": "dwi"
-  - "direction": "PA"
+  - "dir": "PA"
     "extension": ".bvec"
     "metadata":
       "AcquisitionMatrixPE": "122"
@@ -6463,12 +6463,12 @@
       "TxRefAmp": 216.744
     "run": "02"
     "suffix": "dwi"
-  - "direction": "PA"
+  - "dir": "PA"
     "extension": ".json"
     "metadata": {}
     "run": "02"
     "suffix": "dwi"
-  - "direction": "PA"
+  - "dir": "PA"
     "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "122"
@@ -6622,12 +6622,12 @@
     "run": "02"
     "suffix": "dwi"
   "func":
-  - "direction": "AP"
+  - "dir": "AP"
     "extension": ".json"
     "metadata": {}
     "suffix": "bold"
     "task": "rest"
-  - "direction": "AP"
+  - "dir": "AP"
     "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "104"
@@ -6783,12 +6783,12 @@
       "TxRefAmp": 216.744
     "suffix": "bold"
     "task": "rest"
-  - "direction": "PA"
+  - "dir": "PA"
     "extension": ".json"
     "metadata": {}
     "suffix": "bold"
     "task": "rest"
-  - "direction": "PA"
+  - "dir": "PA"
     "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "104"

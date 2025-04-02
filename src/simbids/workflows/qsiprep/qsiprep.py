@@ -30,9 +30,7 @@ SimBIDS workflows
 
 """
 
-import os
 import sys
-from collections import defaultdict
 from importlib import resources
 
 import nipype.pipeline.engine as pe
@@ -46,7 +44,53 @@ from simbids.interfaces.reportlets import AboutSummary, SubjectSummary
 from simbids.utils.utils import _get_wf_name
 
 
-def init_single_subject_qsiprep_wf(subject_id: str, subject_data: dict):
+def collect_data(layout, participant_label, session_id=None, filters=None):
+    """Use pybids to retrieve the input data for a given participant."""
+
+    from bids.layout import Query
+
+    queries = {
+        'fmap': {'datatype': 'fmap'},
+        'sbref': {'datatype': 'func', 'suffix': 'sbref'},
+        'flair': {'datatype': 'anat', 'suffix': 'FLAIR'},
+        't2w': {'datatype': 'anat', 'suffix': 'T2w'},
+        't1w': {'datatype': 'anat', 'suffix': 'T1w'},
+        'roi': {'datatype': 'anat', 'suffix': 'roi'},
+        'dwi': {'datatype': 'dwi', 'part': ['mag', None], 'suffix': 'dwi'},
+    }
+    bids_filters = filters or {}
+    for acq in queries.keys():
+        entities = bids_filters.get(acq, {})
+
+        if ('session' in entities.keys()) and (session_id is not None):
+            config.loggers.workflow.warning(
+                'BIDS filter file value for session may conflict with values specified '
+                'on the command line'
+            )
+        queries[acq]['session'] = session_id or Query.OPTIONAL
+        queries[acq].update(entities)
+
+    subj_data = {
+        dtype: sorted(
+            layout.get(
+                return_type='file',
+                subject=participant_label,
+                extension=['nii', 'nii.gz'],
+                **query,
+            )
+        )
+        for dtype, query in queries.items()
+    }
+
+    config.loggers.workflow.log(
+        25,
+        f'Collected data:\n{yaml.dump(subj_data, default_flow_style=False, indent=4)}',
+    )
+
+    return subj_data
+
+
+def init_single_subject_qsiprep_wf(subject_id: str):
     """Organize the postprocessing pipeline for a single subject."""
 
     workflow = Workflow(name=f'sub_{subject_id}_wf')
@@ -76,7 +120,7 @@ It is released under the
 
 """
     spaces = config.workflow.spaces
-
+    subject_data = collect_data(config.execution.layout, subject_id)
     # Make sure we always go through these two checks
     if not subject_data['dwi']:
         raise RuntimeError(
@@ -268,7 +312,7 @@ dMRI data postprocessing
         )
 
     # Create the anatomical datasinks
-    anatomical_template = "MNI152NLin6Asym"
+    anatomical_template = 'MNI152NLin6Asym'
     for anat_file in subject_data['anat']:
         workflow.add_nodes(
             [

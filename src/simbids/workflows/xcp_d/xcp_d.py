@@ -45,8 +45,42 @@ from simbids.interfaces.reportlets import AboutSummary, SubjectSummary
 from simbids.utils.utils import _get_wf_name, update_dict
 
 
-def init_single_subject_fmripost_wf(subject_id: str, subject_data: dict):
+def init_single_subject_fmripost_wf(subject_id: str):
     """Organize the postprocessing pipeline for a single subject."""
+    from bids.utils import listify
+
+    from simbids.utils.bids import collect_derivatives
+    entities = config.execution.bids_filters or {}
+    entities['subject'] = subject_id
+
+    if config.execution.derivatives:
+        # Raw dataset + derivatives dataset
+        config.loggers.workflow.info('Raw+derivatives workflow mode enabled')
+        # Just build a list of BOLD files right now
+        subject_data = collect_derivatives(
+            raw_dataset=config.execution.layout,
+            derivatives_dataset=None,
+            entities=entities,
+            fieldmap_id=None,
+            allow_multiple=True,
+            spaces=None,
+            bids_app="xcp_d",
+        )
+        subject_data['bold'] = listify(subject_data['bold_raw'])
+    else:
+        # Derivatives dataset only
+        config.loggers.workflow.info('Derivatives-only workflow mode enabled')
+        # Just build a list of BOLD files right now
+        subject_data = collect_derivatives(
+            raw_dataset=None,
+            derivatives_dataset=config.execution.layout,
+            entities=entities,
+            fieldmap_id=None,
+            allow_multiple=True,
+            spaces=None,
+        )
+        # Patch standard-space BOLD files into 'bold' key
+        subject_data['bold'] = listify(subject_data['bold_mni152nlin6asym'])
 
     workflow = Workflow(name=f'sub_{subject_id}_wf')
     workflow.__desc__ = f"""

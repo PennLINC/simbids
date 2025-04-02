@@ -105,48 +105,14 @@ def init_single_subject_wf(subject_id: str):
     subject_id : :obj:`str`
         Subject label for this single-subject workflow.
     """
-    from bids.utils import listify
 
-    from simbids.utils.bids import collect_derivatives
-
-    entities = config.execution.bids_filters or {}
-    entities['subject'] = subject_id
-
-    if config.execution.derivatives:
-        # Raw dataset + derivatives dataset
-        config.loggers.workflow.info('Raw+derivatives workflow mode enabled')
-        # Just build a list of BOLD files right now
-        subject_data = collect_derivatives(
-            raw_dataset=config.execution.layout,
-            derivatives_dataset=None,
-            entities=entities,
-            fieldmap_id=None,
-            allow_multiple=True,
-            spaces=None,
-        )
-        subject_data['bold'] = listify(subject_data['bold_raw'])
-    else:
-        # Derivatives dataset only
-        config.loggers.workflow.info('Derivatives-only workflow mode enabled')
-        # Just build a list of BOLD files right now
-        subject_data = collect_derivatives(
-            raw_dataset=None,
-            derivatives_dataset=config.execution.layout,
-            entities=entities,
-            fieldmap_id=None,
-            allow_multiple=True,
-            spaces=None,
-        )
-        # Patch standard-space BOLD files into 'bold' key
-        subject_data['bold'] = listify(subject_data['bold_mni152nlin6asym'])
-
-    if config.workflow.simulated_app == 'fmripost':
+    if config.workflow.bids_app == 'fmripost':
         from simbids.workflows.xcp_d.xcp_d import init_single_subject_fmripost_wf
 
-        return init_single_subject_fmripost_wf(subject_id, subject_data)
-    elif config.workflow.simulated_app == 'qsiprep':
+        return init_single_subject_fmripost_wf(subject_id)
+    elif config.workflow.bids_app == 'qsiprep':
         from simbids.workflows.qsiprep import init_single_subject_qsiprep_wf
 
-        return init_single_subject_qsiprep_wf(subject_id, subject_data)
+        return init_single_subject_qsiprep_wf(subject_id)
     else:
         raise ValueError(f'Unknown application: {config.workflow.simulated_app}')
