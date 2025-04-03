@@ -46,7 +46,6 @@ def build_workflow(config_file, retval):
     config.load(config_file)
     build_log = config.loggers.workflow
 
-    output_dir = config.execution.output_dir
     version = config.environment.version
 
     retval['return_code'] = 1

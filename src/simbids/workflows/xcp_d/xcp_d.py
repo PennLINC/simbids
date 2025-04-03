@@ -50,6 +50,7 @@ def init_single_subject_fmripost_wf(subject_id: str):
     from bids.utils import listify
 
     from simbids.utils.bids import collect_derivatives
+
     entities = config.execution.bids_filters or {}
     entities['subject'] = subject_id
 
@@ -64,7 +65,7 @@ def init_single_subject_fmripost_wf(subject_id: str):
             fieldmap_id=None,
             allow_multiple=True,
             spaces=None,
-            bids_app="xcp_d",
+            bids_app='xcp_d',
         )
         subject_data['bold'] = listify(subject_data['bold_raw'])
     else:

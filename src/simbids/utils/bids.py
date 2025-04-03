@@ -48,6 +48,7 @@ def collect_derivatives(
     patterns: list[str] | None = None,
     allow_multiple: bool = False,
     spaces: SpatialReferences | None = None,
+    bids_app: str | None = None,
 ) -> dict:
     """Gather existing derivatives and compose a cache.
 

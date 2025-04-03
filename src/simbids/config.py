@@ -481,9 +481,7 @@ class execution(_Config):
                     'sourcedata',
                     'models',
                     re.compile(r'^\.'),
-                    re.compile(
-                        r'sub-[a-zA-Z0-9]+(/ses-[a-zA-Z0-9]+)?/(beh|eeg|ieeg|meg|perf)'
-                    ),
+                    re.compile(r'sub-[a-zA-Z0-9]+(/ses-[a-zA-Z0-9]+)?/(beh|eeg|ieeg|meg|perf)'),
                 ),
             )
             cls._layout = BIDSLayout(
@@ -730,7 +728,6 @@ def init_spaces(checkpoint=True):
     # Add the default standard space if not already present (required by several sub-workflows)
     if 'MNI152NLin6Asym' not in spaces.get_spaces(nonstandard=False, dim=(3,)):
         spaces.add(Reference('MNI152NLin6Asym', {}))
-
 
     # Make the SpatialReferences object available
     workflow.spaces = spaces

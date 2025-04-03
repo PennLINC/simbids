@@ -33,33 +33,135 @@ LGR = logging.getLogger(__name__)
 # These lists define the order in which entities should appear in the YAML output
 # Using BIDS entity keys (e.g., 'ses' instead of 'session')
 DWI_ENTITIES = [
-    'sub', 'ses', 'acq', 'dir', 'run', 'rec', 'mod', 'echo', 'flip',
-    'inv', 'mt', 'part', 'ce', 'recording', 'proc', 'space', 'res', 'den',
-    'desc', 'label', 'from', 'to', 'mode', 'cohort', 'res'
+    'sub',
+    'ses',
+    'acq',
+    'dir',
+    'run',
+    'rec',
+    'mod',
+    'echo',
+    'flip',
+    'inv',
+    'mt',
+    'part',
+    'ce',
+    'recording',
+    'proc',
+    'space',
+    'res',
+    'den',
+    'desc',
+    'label',
+    'from',
+    'to',
+    'mode',
+    'cohort',
+    'res',
 ]
 
 FMAP_ENTITIES = [
-    'sub', 'ses', 'acq', 'dir', 'run', 'rec', 'mod', 'echo', 'flip',
-    'inv', 'mt', 'part', 'ce', 'recording', 'proc', 'space', 'res', 'den',
-    'desc', 'label', 'from', 'to', 'mode', 'cohort', 'res'
+    'sub',
+    'ses',
+    'acq',
+    'dir',
+    'run',
+    'rec',
+    'mod',
+    'echo',
+    'flip',
+    'inv',
+    'mt',
+    'part',
+    'ce',
+    'recording',
+    'proc',
+    'space',
+    'res',
+    'den',
+    'desc',
+    'label',
+    'from',
+    'to',
+    'mode',
+    'cohort',
+    'res',
 ]
 
 ANAT_ENTITIES = [
-    'sub', 'ses', 'acq', 'ce', 'rec', 'run', 'mod', 'echo', 'flip',
-    'inv', 'mt', 'part', 'proc', 'space', 'res', 'den', 'desc', 'label',
-    'from', 'to', 'mode', 'cohort', 'res'
+    'sub',
+    'ses',
+    'acq',
+    'ce',
+    'rec',
+    'run',
+    'mod',
+    'echo',
+    'flip',
+    'inv',
+    'mt',
+    'part',
+    'proc',
+    'space',
+    'res',
+    'den',
+    'desc',
+    'label',
+    'from',
+    'to',
+    'mode',
+    'cohort',
+    'res',
 ]
 
 FUNC_ENTITIES = [
-    'sub', 'ses', 'task', 'acq', 'ce', 'rec', 'dir', 'run', 'echo',
-    'recording', 'part', 'proc', 'space', 'res', 'den', 'desc', 'label',
-    'from', 'to', 'mode', 'cohort', 'res'
+    'sub',
+    'ses',
+    'task',
+    'acq',
+    'ce',
+    'rec',
+    'dir',
+    'run',
+    'echo',
+    'recording',
+    'part',
+    'proc',
+    'space',
+    'res',
+    'den',
+    'desc',
+    'label',
+    'from',
+    'to',
+    'mode',
+    'cohort',
+    'res',
 ]
 
 PERF_ENTITIES = [
-    'sub', 'ses', 'acq', 'rec', 'run', 'mod', 'echo', 'flip',
-    'inv', 'mt', 'part', 'proc', 'space', 'res', 'den', 'desc', 'label',
-    'from', 'to', 'mode', 'cohort', 'res'
+    'sub',
+    'ses',
+    'acq',
+    'rec',
+    'run',
+    'mod',
+    'echo',
+    'flip',
+    'inv',
+    'mt',
+    'part',
+    'proc',
+    'space',
+    'res',
+    'den',
+    'desc',
+    'label',
+    'from',
+    'to',
+    'mode',
+    'cohort',
+    'res',
 ]
 
 # Mapping from full entity names to BIDS entity keys
@@ -87,15 +189,17 @@ ENTITY_KEY_MAP = {
     'to': 'to',
     'mode': 'mode',
     'cohort': 'cohort',
-    'res': 'res'
+    'res': 'res',
 }
 
 # Reverse mapping from BIDS entity keys to full names
 REVERSE_ENTITY_KEY_MAP = {v: k for k, v in ENTITY_KEY_MAP.items()}
 
+
 def _convert_to_bids_key(key):
     """Convert full entity name to BIDS entity key."""
     return ENTITY_KEY_MAP.get(key, key)
+
 
 def _convert_from_bids_key(key):
     """Convert BIDS entity key to full entity name."""
@@ -250,7 +354,8 @@ def create_skeleton_from_bids(bids_dir, n_subjects, n_sessions):
                     dwi_entry = {'suffix': 'dwi', 'metadata': dwi_sidecar}
                     for key in DWI_ENTITIES:
                         full_key = _convert_from_bids_key(key)
-                        if full_key in entities and full_key != 'session':  # Skip session as it's handled separately
+                        # Skip session as it's handled separately
+                        if full_key in entities and full_key != 'session':
                             dwi_entry[key] = _sanitize_value(entities[full_key])
                     skeleton[subject]['dwi'].append(dwi_entry)
 
@@ -264,7 +369,8 @@ def create_skeleton_from_bids(bids_dir, n_subjects, n_sessions):
                     func_entry = {'suffix': 'bold', 'metadata': func_sidecar}
                     for key in FUNC_ENTITIES:
                         full_key = _convert_from_bids_key(key)
-                        if full_key in entities and full_key != 'session':  # Skip session as it's handled separately
+                        # Skip session as it's handled separately
+                        if full_key in entities and full_key != 'session':
                             func_entry[key] = _sanitize_value(entities[full_key])
                     skeleton[subject]['func'].append(func_entry)
 
@@ -276,20 +382,26 @@ def create_skeleton_from_bids(bids_dir, n_subjects, n_sessions):
                 fmap_entry = {'suffix': 'epi', 'metadata': fmap_sidecar}
                 for key in FMAP_ENTITIES:
                     full_key = _convert_from_bids_key(key)
-                    if full_key in entities and full_key != 'session':  # Skip session as it's handled separately
+                    if (
+                        full_key in entities and full_key != 'session'
+                    ):  # Skip session as it's handled separately
                         fmap_entry[key] = _sanitize_value(entities[full_key])
                 fmap_entries.append(fmap_entry)
             skeleton[subject]['fmap'] = fmap_entries
 
             # Add anat entries
             anat_entries = []
-            for anat_file in layout.get(subject=subject, suffix=['T1w', 'T2w', 'FLAIR', 'PDw'], extension='.json'):
+            for anat_file in layout.get(
+                subject=subject, suffix=['T1w', 'T2w', 'FLAIR', 'PDw'], extension='.json'
+            ):
                 anat_sidecar = _sanitize_metadata(anat_file.get_metadata())
                 entities = parse_file_entities(Path(anat_file).name)
                 anat_entry = {'suffix': entities.get('suffix', ''), 'metadata': anat_sidecar}
                 for key in ANAT_ENTITIES:
                     full_key = _convert_from_bids_key(key)
-                    if full_key in entities and full_key != 'session':  # Skip session as it's handled separately
+                    if (
+                        full_key in entities and full_key != 'session'
+                    ):  # Skip session as it's handled separately
                         anat_entry[key] = _sanitize_value(entities[full_key])
                 anat_entries.append(anat_entry)
             skeleton[subject]['anat'] = anat_entries
@@ -330,7 +442,8 @@ def create_skeleton_from_bids(bids_dir, n_subjects, n_sessions):
                         dwi_entry = {'suffix': 'dwi', 'metadata': dwi_sidecar}
                         for key in DWI_ENTITIES:
                             full_key = _convert_from_bids_key(key)
-                            if full_key in entities and full_key != 'session':  # Skip session as it's handled separately
+                            # Skip session as it's handled separately
+                            if full_key in entities and full_key != 'session':
                                 dwi_entry[key] = _sanitize_value(entities[full_key])
                         session_data['dwi'].append(dwi_entry)
 
@@ -346,32 +459,42 @@ def create_skeleton_from_bids(bids_dir, n_subjects, n_sessions):
                         func_entry = {'suffix': 'bold', 'metadata': func_sidecar}
                         for key in FUNC_ENTITIES:
                             full_key = _convert_from_bids_key(key)
-                            if full_key in entities and full_key != 'session':  # Skip session as it's handled separately
+                            # Skip session as it's handled separately
+                            if full_key in entities and full_key != 'session':
                                 func_entry[key] = _sanitize_value(entities[full_key])
                         session_data['func'].append(func_entry)
 
                 # Add fmap entries
                 fmap_entries = []
-                for fmap_file in layout.get(subject=subject, session=session, suffix='epi', extension='.json'):
+                for fmap_file in layout.get(
+                    subject=subject, session=session, suffix='epi', extension='.json'
+                ):
                     fmap_sidecar = _sanitize_metadata(fmap_file.get_metadata())
                     entities = parse_file_entities(Path(fmap_file).name)
                     fmap_entry = {'suffix': 'epi', 'metadata': fmap_sidecar}
                     for key in FMAP_ENTITIES:
                         full_key = _convert_from_bids_key(key)
-                        if full_key in entities and full_key != 'session':  # Skip session as it's handled separately
+                        # Skip session as it's handled separately
+                        if full_key in entities and full_key != 'session':
                             fmap_entry[key] = _sanitize_value(entities[full_key])
                     fmap_entries.append(fmap_entry)
                 session_data['fmap'] = fmap_entries
 
                 # Add anat entries
                 anat_entries = []
-                for anat_file in layout.get(subject=subject, session=session, suffix=['T1w', 'T2w', 'FLAIR', 'PDw'], extension='.json'):
+                for anat_file in layout.get(
+                    subject=subject,
+                    session=session,
+                    suffix=['T1w', 'T2w', 'FLAIR', 'PDw'],
+                    extension='.json',
+                ):
                     anat_sidecar = _sanitize_metadata(anat_file.get_metadata())
                     entities = parse_file_entities(Path(anat_file).name)
                     anat_entry = {'suffix': entities.get('suffix', ''), 'metadata': anat_sidecar}
                     for key in ANAT_ENTITIES:
                         full_key = _convert_from_bids_key(key)
-                        if full_key in entities and full_key != 'session':  # Skip session as it's handled separately
+                        # Skip session as it's handled separately
+                        if full_key in entities and full_key != 'session':
                             anat_entry[key] = _sanitize_value(entities[full_key])
                     anat_entries.append(anat_entry)
                 session_data['anat'] = anat_entries
@@ -410,6 +533,7 @@ def _convert_to_serializable(obj):
     if isinstance(obj, dict):
         return {k: _convert_to_serializable(v) for k, v in obj.items()}
     return str(obj)
+
 
 # configs = {}
 # ds_paths = ("ds002278", "ds004146", "ds005237")

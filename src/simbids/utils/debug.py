@@ -59,12 +59,13 @@ def setup_exceptionhook(ipython=False):
     pdb.post_mortem; if not interactive, then invokes default handler.
     """
 
-    def _pdb_excepthook(type, value, tb):
+    def _pdb_excepthook(_type, value, tb):
         import traceback
 
-        traceback.print_exception(type, value, tb)
+        traceback.print_exception(_type, value, tb)
         print()
         if is_interactive():
+            # Import pdb only when needed
             import pdb
 
             pdb.post_mortem(tb)

@@ -23,8 +23,6 @@
 """Simulated BIDS workflows."""
 
 from simbids import config
-import sys
-import logging
 
 EXITCODE: int = -1
 
@@ -32,7 +30,6 @@ EXITCODE: int = -1
 def main():
     """Entry point."""
     import gc
-    from multiprocessing import Manager, Process
 
     from simbids.cli.parser import parse_args
     from simbids.cli.workflow import build_workflow
