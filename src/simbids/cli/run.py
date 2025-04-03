@@ -30,13 +30,12 @@ EXITCODE: int = -1
 def main():
     """Entry point."""
     import gc
-    from multiprocessing import Manager, Process
 
+    from simbids.cli.parser import parse_args
     from simbids.cli.workflow import build_workflow
 
-    # Code Carbon
-    if config.execution.track_carbon:
-        pass
+    # Parse arguments
+    parse_args()
 
     if 'pdb' in config.execution.debug:
         from simbids.utils.debug import setup_exceptionhook
@@ -51,22 +50,7 @@ def main():
     config_file.parent.mkdir(exist_ok=True, parents=True)
     config.to_filename(config_file)
 
-    # CRITICAL Call build_workflow(config_file, retval) in a subprocess.
-    # Because Python on Linux does not ever free virtual memory (VM), running the
-    # workflow construction jailed within a process preempts excessive VM buildup.
-    if 'pdb' not in config.execution.debug:
-        with Manager() as mgr:
-            retval = mgr.dict()
-            p = Process(target=build_workflow, args=(str(config_file), retval))
-            p.start()
-            p.join()
-            retval = dict(retval.items())  # Convert to base dictionary
-
-            if p.exitcode:
-                retval['return_code'] = p.exitcode
-
-    else:
-        retval = build_workflow(str(config_file), {})
+    retval = build_workflow(str(config_file), {})
 
     global EXITCODE
     EXITCODE = retval.get('return_code', 0)

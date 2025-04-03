@@ -206,7 +206,7 @@ except Exception:  # noqa: S110, BLE001
 
 # Debug modes are names that influence the exposure of internal details to
 # the user, either through additional derivatives or increased verbosity
-DEBUG_MODES = ('compcor', 'fieldmaps', 'pdb')
+DEBUG_MODES = ('pdb',)
 
 
 class _Config:
@@ -481,9 +481,7 @@ class execution(_Config):
                     'sourcedata',
                     'models',
                     re.compile(r'^\.'),
-                    re.compile(
-                        r'sub-[a-zA-Z0-9]+(/ses-[a-zA-Z0-9]+)?/(beh|dwi|eeg|ieeg|meg|perf)'
-                    ),
+                    re.compile(r'sub-[a-zA-Z0-9]+(/ses-[a-zA-Z0-9]+)?/(beh|eeg|ieeg|meg|perf)'),
                 ),
             )
             cls._layout = BIDSLayout(
@@ -541,15 +539,8 @@ class workflow(_Config):
 
     ignore = None
     """Ignore particular steps for *SimBIDS*."""
-    cifti_output = None
-    """Generate HCP Grayordinates, accepts either ``'91k'`` (default) or ``'170k'``."""
-    dummy_scans = None
-    """Set a number of initial scans to be considered nonsteady states."""
-    slice_time_ref = 0.5
-    """The time of the reference slice to correct BOLD values to, as a fraction
-    acquisition time. 0 indicates the start, 0.5 the midpoint, and 1 the end
-    of acquisition. The alias `start` corresponds to 0, and `middle` to 0.5.
-    The default value is 0.5."""
+    bids_app = 'qsiprep'
+    """The BIDS App to simulate."""
 
 
 class loggers:
@@ -737,15 +728,6 @@ def init_spaces(checkpoint=True):
     # Add the default standard space if not already present (required by several sub-workflows)
     if 'MNI152NLin6Asym' not in spaces.get_spaces(nonstandard=False, dim=(3,)):
         spaces.add(Reference('MNI152NLin6Asym', {}))
-
-    # Ensure user-defined spatial references for outputs are correctly parsed.
-    # Certain options require normalization to a space not explicitly defined by users.
-    # These spaces will not be included in the final outputs.
-    cifti_output = workflow.cifti_output
-    if cifti_output:
-        # CIFTI grayordinates to corresponding FSL-MNI resolutions.
-        vol_res = '2' if cifti_output == '91k' else '1'
-        spaces.add(Reference('MNI152NLin6Asym', {'res': vol_res}))
 
     # Make the SpatialReferences object available
     workflow.spaces = spaces

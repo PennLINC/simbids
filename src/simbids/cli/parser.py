@@ -146,6 +146,12 @@ def _build_parser(**kwargs):
         ),
     )
 
+    parser.add_argument(
+        'bids_app',
+        choices=['qsiprep', 'qsirecon', 'xcp_d', 'fmriprep'],
+        help=('BIDS-App to be simulated'),
+    )
+
     g_bids = parser.add_argument_group('Options for filtering BIDS queries')
     g_bids.add_argument(
         '--skip_bids_validation',
@@ -336,3 +342,4 @@ def parse_args(args=None, namespace=None):
         )
 
     config.execution.participant_label = sorted(participant_label)
+    return opts

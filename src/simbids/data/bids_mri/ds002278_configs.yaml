@@ -1,14 +1,54 @@
 "Blossom":
-- "func":
+- "anat": []
+  "fmap":
+  - "acq": "func"
+    "dir": "AP"
+    "metadata": {}
+    "run": "1"
+    "suffix": "epi"
+  - "acq": "func"
+    "dir": "AP"
+    "metadata": {}
+    "run": "2"
+    "suffix": "epi"
+  - "acq": "func"
+    "dir": "AP"
+    "metadata": {}
+    "run": "3"
+    "suffix": "epi"
+  - "acq": "func"
+    "dir": "AP"
+    "metadata": {}
+    "run": "4"
+    "suffix": "epi"
+  - "acq": "func"
+    "dir": "PA"
+    "metadata": {}
+    "run": "1"
+    "suffix": "epi"
+  - "acq": "func"
+    "dir": "PA"
+    "metadata": {}
+    "run": "2"
+    "suffix": "epi"
+  - "acq": "func"
+    "dir": "PA"
+    "metadata": {}
+    "run": "3"
+    "suffix": "epi"
+  - "acq": "func"
+    "dir": "PA"
+    "metadata": {}
+    "run": "4"
+    "suffix": "epi"
+  "func":
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "EIRT"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "39"
@@ -151,14 +191,12 @@
     "suffix": "bold"
     "task": "EIRT"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "EIRT"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -302,14 +340,12 @@
     "suffix": "bold"
     "task": "EIRT"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "EIRT"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "39"
@@ -452,14 +488,12 @@
     "suffix": "bold"
     "task": "EIRT"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "EIRT"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -603,14 +637,12 @@
     "suffix": "bold"
     "task": "EIRT"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "EIRT"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "38"
@@ -753,14 +785,12 @@
     "suffix": "bold"
     "task": "EIRT"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "EIRT"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -904,14 +934,12 @@
     "suffix": "bold"
     "task": "EIRT"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "EIRT"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "38"
@@ -1054,14 +1082,12 @@
     "suffix": "bold"
     "task": "EIRT"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "EIRT"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -1205,14 +1231,12 @@
     "suffix": "bold"
     "task": "EIRT"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "EIRT"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -1355,14 +1379,12 @@
     "suffix": "bold"
     "task": "EIRT"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "EIRT"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "36"
@@ -1506,14 +1528,12 @@
     "suffix": "bold"
     "task": "EIRT"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "EIRT"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -1656,14 +1676,12 @@
     "suffix": "bold"
     "task": "EIRT"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "EIRT"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "36"
@@ -1807,14 +1825,12 @@
     "suffix": "bold"
     "task": "EIRT"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "EIRT"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -1957,14 +1973,12 @@
     "suffix": "bold"
     "task": "EIRT"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "EIRT"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "35"
@@ -2108,14 +2122,12 @@
     "suffix": "bold"
     "task": "EIRT"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "EIRT"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -2258,14 +2270,12 @@
     "suffix": "bold"
     "task": "EIRT"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "EIRT"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "35"
@@ -2409,14 +2419,12 @@
     "suffix": "bold"
     "task": "EIRT"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "PST"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -2559,14 +2567,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "PST"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -2710,14 +2716,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "PST"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -2860,14 +2864,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "PST"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -3011,14 +3013,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "PST"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -3161,14 +3161,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "PST"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -3312,14 +3310,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "PST"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -3462,14 +3458,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "PST"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -3613,14 +3607,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "PST"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -3763,14 +3755,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "PST"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -3914,14 +3904,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "PST"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -4064,14 +4052,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "PST"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -4215,14 +4201,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "PST"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -4365,14 +4349,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "PST"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -4516,14 +4498,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "PST"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -4666,14 +4646,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "PST"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -4817,14 +4795,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "rest"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -4967,14 +4943,12 @@
     "suffix": "bold"
     "task": "rest"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "rest"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -5118,14 +5092,12 @@
     "suffix": "bold"
     "task": "rest"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "rest"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -5268,14 +5240,12 @@
     "suffix": "bold"
     "task": "rest"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "rest"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -5419,14 +5389,12 @@
     "suffix": "bold"
     "task": "rest"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "rest"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -5569,14 +5537,12 @@
     "suffix": "bold"
     "task": "rest"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "rest"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -5720,14 +5686,12 @@
     "suffix": "bold"
     "task": "rest"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "rest"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -5870,14 +5834,12 @@
     "suffix": "bold"
     "task": "rest"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "rest"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -6021,14 +5983,12 @@
     "suffix": "bold"
     "task": "rest"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "rest"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -6171,14 +6131,12 @@
     "suffix": "bold"
     "task": "rest"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "rest"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -6322,14 +6280,12 @@
     "suffix": "bold"
     "task": "rest"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "rest"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -6472,14 +6428,12 @@
     "suffix": "bold"
     "task": "rest"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "rest"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -6623,14 +6577,12 @@
     "suffix": "bold"
     "task": "rest"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "rest"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -6773,14 +6725,12 @@
     "suffix": "bold"
     "task": "rest"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "rest"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -6924,14 +6874,12 @@
     "suffix": "bold"
     "task": "rest"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "rest"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -7074,14 +7022,12 @@
     "suffix": "bold"
     "task": "rest"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "rest"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -7225,14 +7171,12 @@
     "suffix": "bold"
     "task": "rest"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -7375,14 +7319,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -7526,14 +7468,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -7676,14 +7616,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -7827,14 +7765,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -7977,14 +7913,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -8128,14 +8062,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -8278,14 +8210,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -8429,14 +8359,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -8579,14 +8507,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -8730,14 +8656,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -8880,14 +8804,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -9031,14 +8953,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -9181,14 +9101,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -9332,14 +9250,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -9482,14 +9398,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -9633,14 +9547,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "3"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -9783,14 +9695,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "3"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -9934,14 +9844,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "3"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -10084,14 +9992,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "3"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -10235,14 +10141,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "3"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -10385,14 +10289,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "3"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -10536,14 +10438,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "3"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -10686,14 +10586,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "3"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -10837,14 +10735,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "4"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -10987,14 +10883,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "4"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -11138,14 +11032,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "4"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -11288,14 +11180,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "4"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -11439,14 +11329,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "4"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -11589,14 +11477,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "4"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -11740,14 +11626,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "4"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -11890,14 +11774,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "4"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -12041,14 +11923,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "5"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -12191,14 +12071,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "5"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "145"
@@ -12342,14 +12220,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "5"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -12492,14 +12368,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "5"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "145"
@@ -12643,14 +12517,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "5"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -12793,14 +12665,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "5"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "145"
@@ -12944,14 +12814,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "5"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -13094,14 +12962,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "5"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "144"
@@ -13245,14 +13111,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "6"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -13395,14 +13259,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "6"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -13546,14 +13408,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "6"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -13696,14 +13556,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "6"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -13847,14 +13705,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "6"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -13997,14 +13853,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "6"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -14148,14 +14002,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "6"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -14298,14 +14150,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "6"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -14450,179 +14300,61 @@
     "task": "strangerthings"
   "session": "01"
 - "anat":
-  - "extension": ".json"
-    "metadata": {}
+  - "metadata": {}
     "run": "1"
     "suffix": "T1w"
-  - "extension": ".nii.gz"
-    "metadata":
-      "AcquisitionMatrixPE": "256"
-      "AcquisitionNumber": "1"
-      "AcquisitionTime": "18:18:23.715000"
-      "BaseResolution": "256"
-      "BodyPartExamined": "BRAIN"
-      "ConsistencyInfo": "N4_VE11C_LATEST_20160120"
-      "ConversionSoftware": "dcm2niix"
-      "ConversionSoftwareVersion": "v1.0.20200331"
-      "DeviceSerialNumber": "166003"
-      "DwellTime": 8.2e-06
-      "EchoTime": 0.0029
-      "FlipAngle": "8"
-      "ImageOrientationPatientDICOM":
-      - 0
-      - 1
-      - 0
-      - 0
-      - 0
-      - -1
-      "ImageType":
-      - "ORIGINAL"
-      - "PRIMARY"
-      - "M"
-      - "ND"
-      - "NORM"
-      "ImagingFrequency": 123.249
-      "InPlanePhaseEncodingDirectionDICOM": "ROW"
-      "InstitutionAddress": "SW_8TH_ST_OE116_11200_MIAMI_Med-Lab_US_33199"
-      "InstitutionName": "FIU_Center_For_Imaging_Science"
-      "InstitutionalDepartmentName": "Department"
-      "InversionTime": 1.07
-      "MRAcquisitionType": "3D"
-      "MagneticFieldStrength": "3"
-      "Manufacturer": "Siemens"
-      "ManufacturersModelName": "Prisma"
-      "Modality": "MR"
-      "ParallelReductionFactorInPlane": "2"
-      "PartialFourier": "1"
-      "PatientPosition": "HFS"
-      "PercentPhaseFOV": "100"
-      "PercentSampling": "100"
-      "PhaseEncodingSteps": "255"
-      "PhaseResolution": "1"
-      "PixelBandwidth": "240"
-      "ProcedureStepDescription": "Laird_Laird_DIVA"
-      "ProtocolName": "anat-T1w_run-01"
-      "PulseSequenceDetails": "%CustomerSeq%_tfl_mgh_epinav_ABCD"
-      "ReceiveCoilActiveElements": "HEA;HEP"
-      "ReceiveCoilName": "Head_32"
-      "ReconMatrixPE": "256"
-      "RefLinesPE": "32"
-      "RepetitionTime": 2.5
-      "SAR": 0.0350434
-      "ScanOptions": "IR_WE"
-      "ScanningSequence": "GR_IR"
-      "SequenceName": "tfl3d1_16ns"
-      "SequenceVariant": "SK_SP_MP"
-      "SeriesDescription": "anat-T1w_run-01"
-      "SeriesNumber": "35"
-      "ShimSetting":
-      - -179
-      - -428
-      - 889
-      - 324
-      - 18
-      - 65
-      - 104
-      - -3
-      "SliceThickness": "1"
-      "SoftwareVersions": "syngo_MR_E11"
-      "StationName": "AWP166003"
-      "TxRefAmp": 231.921
-      "WipMemBlock": "Prisma_epi_moco_navigator_ABCD_tfl.prot"
+  - "metadata": {}
     "run": "1"
-    "suffix": "T1w"
-  - "extension": ".json"
+    "suffix": "T2w"
+  "fmap":
+  - "acq": "func"
+    "dir": "AP"
     "metadata": {}
     "run": "1"
-    "suffix": "T2w"
-  - "extension": ".nii.gz"
-    "metadata":
-      "AcquisitionMatrixPE": "256"
-      "AcquisitionNumber": "1"
-      "AcquisitionTime": "18:25:2.277500"
-      "BaseResolution": "256"
-      "BodyPartExamined": "BRAIN"
-      "ConsistencyInfo": "N4_VE11C_LATEST_20160120"
-      "ConversionSoftware": "dcm2niix"
-      "ConversionSoftwareVersion": "v1.0.20200331"
-      "DeviceSerialNumber": "166003"
-      "DwellTime": 8.1e-06
-      "EchoTime": 0.565
-      "EchoTrainLength": "190"
-      "FlipAngle": "120"
-      "ImageOrientationPatientDICOM":
-      - 0
-      - 1
-      - 0
-      - 0
-      - 0
-      - -1
-      "ImageType":
-      - "ORIGINAL"
-      - "PRIMARY"
-      - "M"
-      - "ND"
-      - "NORM"
-      "ImagingFrequency": 123.249
-      "InPlanePhaseEncodingDirectionDICOM": "ROW"
-      "InstitutionAddress": "SW_8TH_ST_OE116_11200_MIAMI_Med-Lab_US_33199"
-      "InstitutionName": "FIU_Center_For_Imaging_Science"
-      "InstitutionalDepartmentName": "Department"
-      "MRAcquisitionType": "3D"
-      "MagneticFieldStrength": "3"
-      "Manufacturer": "Siemens"
-      "ManufacturersModelName": "Prisma"
-      "Modality": "MR"
-      "ParallelReductionFactorInPlane": "2"
-      "PartialFourier": "1"
-      "PatientPosition": "HFS"
-      "PercentPhaseFOV": "100"
-      "PercentSampling": "100"
-      "PhaseEncodingDirection": "i"
-      "PhaseEncodingSteps": "227"
-      "PhaseResolution": "1"
-      "PixelBandwidth": "240"
-      "ProcedureStepDescription": "Laird_Laird_DIVA"
-      "ProtocolName": "anat-T2w_run-01"
-      "PulseSequenceDetails": "%CustomerSeq%_tse_vfl_mgh_epinav_ABCD"
-      "ReceiveCoilActiveElements": "HEA;HEP"
-      "ReceiveCoilName": "Head_32"
-      "ReconMatrixPE": "256"
-      "RefLinesPE": "32"
-      "RepetitionTime": 3.2
-      "SAR": 0.0771972
-      "ScanOptions": "PFP_FS"
-      "ScanningSequence": "SE"
-      "SequenceName": "spc_200ns"
-      "SequenceVariant": "SK_SP"
-      "SeriesDescription": "anat-T2w_run-01"
-      "SeriesNumber": "38"
-      "ShimSetting":
-      - -179
-      - -428
-      - 889
-      - 324
-      - 18
-      - 65
-      - 104
-      - -3
-      "SliceThickness": "1"
-      "SoftwareVersions": "syngo_MR_E11"
-      "StationName": "AWP166003"
-      "TxRefAmp": 231.921
-      "WipMemBlock": "Prisma_epi_moco_navigator_ABCD_tse_vfl.prot"
+    "suffix": "epi"
+  - "acq": "func"
+    "dir": "AP"
+    "metadata": {}
+    "run": "2"
+    "suffix": "epi"
+  - "acq": "func"
+    "dir": "AP"
+    "metadata": {}
+    "run": "3"
+    "suffix": "epi"
+  - "acq": "func"
+    "dir": "AP"
+    "metadata": {}
+    "run": "4"
+    "suffix": "epi"
+  - "acq": "func"
+    "dir": "PA"
+    "metadata": {}
     "run": "1"
-    "suffix": "T2w"
+    "suffix": "epi"
+  - "acq": "func"
+    "dir": "PA"
+    "metadata": {}
+    "run": "2"
+    "suffix": "epi"
+  - "acq": "func"
+    "dir": "PA"
+    "metadata": {}
+    "run": "3"
+    "suffix": "epi"
+  - "acq": "func"
+    "dir": "PA"
+    "metadata": {}
+    "run": "4"
+    "suffix": "epi"
   "func":
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "localizerDetection"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -14765,14 +14497,12 @@
     "suffix": "bold"
     "task": "localizerDetection"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "localizerDetection"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -14916,14 +14646,12 @@
     "suffix": "bold"
     "task": "localizerDetection"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "localizerDetection"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -15066,14 +14794,12 @@
     "suffix": "bold"
     "task": "localizerDetection"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "localizerDetection"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -15217,14 +14943,12 @@
     "suffix": "bold"
     "task": "localizerDetection"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "localizerDetection"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -15367,14 +15091,12 @@
     "suffix": "bold"
     "task": "localizerDetection"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "localizerDetection"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -15518,14 +15240,12 @@
     "suffix": "bold"
     "task": "localizerDetection"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "localizerDetection"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -15668,14 +15388,12 @@
     "suffix": "bold"
     "task": "localizerDetection"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "localizerDetection"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -15819,14 +15537,12 @@
     "suffix": "bold"
     "task": "localizerDetection"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "localizerEstimation"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -15969,14 +15685,12 @@
     "suffix": "bold"
     "task": "localizerEstimation"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "localizerEstimation"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -16120,14 +15834,12 @@
     "suffix": "bold"
     "task": "localizerEstimation"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "localizerEstimation"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -16270,14 +15982,12 @@
     "suffix": "bold"
     "task": "localizerEstimation"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "localizerEstimation"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -16421,14 +16131,12 @@
     "suffix": "bold"
     "task": "localizerEstimation"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "localizerEstimation"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -16571,14 +16279,12 @@
     "suffix": "bold"
     "task": "localizerEstimation"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "localizerEstimation"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -16722,14 +16428,12 @@
     "suffix": "bold"
     "task": "localizerEstimation"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "localizerEstimation"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -16872,14 +16576,12 @@
     "suffix": "bold"
     "task": "localizerEstimation"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "localizerEstimation"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -17023,14 +16725,12 @@
     "suffix": "bold"
     "task": "localizerEstimation"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "PST"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -17173,14 +16873,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "PST"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -17324,14 +17022,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "PST"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -17474,14 +17170,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "PST"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -17625,14 +17319,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "PST"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -17775,14 +17467,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "PST"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -17926,14 +17616,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "PST"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -18076,14 +17764,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "PST"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -18227,14 +17913,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "PST"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -18377,14 +18061,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "PST"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -18528,14 +18210,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "PST"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -18678,14 +18358,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "PST"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -18829,14 +18507,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "PST"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -18979,14 +18655,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "PST"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -19130,14 +18804,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "PST"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -19280,14 +18952,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "PST"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -19431,14 +19101,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "rest"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -19581,14 +19249,12 @@
     "suffix": "bold"
     "task": "rest"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "rest"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -19732,14 +19398,12 @@
     "suffix": "bold"
     "task": "rest"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "rest"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -19882,14 +19546,12 @@
     "suffix": "bold"
     "task": "rest"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "rest"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -20033,14 +19695,12 @@
     "suffix": "bold"
     "task": "rest"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "rest"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -20183,14 +19843,12 @@
     "suffix": "bold"
     "task": "rest"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "rest"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -20334,14 +19992,12 @@
     "suffix": "bold"
     "task": "rest"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "rest"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -20484,14 +20140,12 @@
     "suffix": "bold"
     "task": "rest"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "rest"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -20635,14 +20289,12 @@
     "suffix": "bold"
     "task": "rest"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -20785,14 +20437,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -20936,14 +20586,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -21086,14 +20734,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -21237,14 +20883,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -21387,14 +21031,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -21538,14 +21180,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -21688,14 +21328,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -21839,14 +21477,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -21989,14 +21625,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -22140,14 +21774,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -22290,14 +21922,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -22441,14 +22071,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -22591,14 +22219,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -22742,14 +22368,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -22892,14 +22516,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -23043,14 +22665,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "3"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -23193,14 +22813,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "3"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -23344,14 +22962,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "3"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -23494,14 +23110,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "3"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -23645,14 +23259,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "3"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -23795,14 +23407,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "3"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -23946,14 +23556,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "3"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -24096,14 +23704,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "3"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -24247,14 +23853,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "4"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -24397,14 +24001,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "4"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -24548,14 +24150,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "4"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -24698,14 +24298,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "4"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -24849,14 +24447,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "4"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -24999,14 +24595,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "4"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -25150,14 +24744,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "4"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -25300,14 +24892,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "4"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -25451,14 +25041,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "5"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -25601,14 +25189,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "5"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -25752,14 +25338,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "5"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -25902,14 +25486,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "5"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -26053,14 +25635,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "5"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -26203,14 +25783,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "5"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -26354,14 +25932,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "5"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -26504,14 +26080,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "5"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -26655,14 +26229,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "6"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -26805,14 +26377,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "6"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -26956,14 +26526,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "6"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -27106,14 +26674,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "6"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -27257,14 +26823,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "6"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -27407,14 +26971,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "6"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -27558,14 +27120,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "6"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -27708,14 +27268,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "6"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -27859,14 +27417,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "7"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -28009,14 +27565,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "7"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -28160,14 +27714,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "7"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -28310,14 +27862,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "7"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -28461,14 +28011,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "7"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -28611,14 +28159,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "7"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -28762,14 +28308,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "7"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -28912,14 +28456,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "7"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -29064,16 +28606,56 @@
     "task": "strangerthings"
   "session": "02"
 "Bubbles":
-- "func":
+- "anat": []
+  "fmap":
+  - "acq": "func"
+    "dir": "AP"
+    "metadata": {}
+    "run": "1"
+    "suffix": "epi"
+  - "acq": "func"
+    "dir": "AP"
+    "metadata": {}
+    "run": "2"
+    "suffix": "epi"
+  - "acq": "func"
+    "dir": "AP"
+    "metadata": {}
+    "run": "3"
+    "suffix": "epi"
+  - "acq": "func"
+    "dir": "AP"
+    "metadata": {}
+    "run": "4"
+    "suffix": "epi"
+  - "acq": "func"
+    "dir": "PA"
+    "metadata": {}
+    "run": "1"
+    "suffix": "epi"
+  - "acq": "func"
+    "dir": "PA"
+    "metadata": {}
+    "run": "2"
+    "suffix": "epi"
+  - "acq": "func"
+    "dir": "PA"
+    "metadata": {}
+    "run": "3"
+    "suffix": "epi"
+  - "acq": "func"
+    "dir": "PA"
+    "metadata": {}
+    "run": "4"
+    "suffix": "epi"
+  "func":
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "arithmetic"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -29216,14 +28798,12 @@
     "suffix": "bold"
     "task": "arithmetic"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "arithmetic"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -29367,14 +28947,12 @@
     "suffix": "bold"
     "task": "arithmetic"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "arithmetic"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -29517,14 +29095,12 @@
     "suffix": "bold"
     "task": "arithmetic"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "arithmetic"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -29668,14 +29244,12 @@
     "suffix": "bold"
     "task": "arithmetic"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "arithmetic"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -29818,14 +29392,12 @@
     "suffix": "bold"
     "task": "arithmetic"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "arithmetic"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -29969,14 +29541,12 @@
     "suffix": "bold"
     "task": "arithmetic"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "arithmetic"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -30119,14 +29689,12 @@
     "suffix": "bold"
     "task": "arithmetic"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "arithmetic"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -30270,14 +29838,12 @@
     "suffix": "bold"
     "task": "arithmetic"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "arithmetic"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -30420,14 +29986,12 @@
     "suffix": "bold"
     "task": "arithmetic"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "arithmetic"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -30571,14 +30135,12 @@
     "suffix": "bold"
     "task": "arithmetic"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "arithmetic"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -30721,14 +30283,12 @@
     "suffix": "bold"
     "task": "arithmetic"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "arithmetic"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -30872,14 +30432,12 @@
     "suffix": "bold"
     "task": "arithmetic"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "arithmetic"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -31022,14 +30580,12 @@
     "suffix": "bold"
     "task": "arithmetic"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "arithmetic"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -31173,14 +30729,12 @@
     "suffix": "bold"
     "task": "arithmetic"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "arithmetic"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -31323,14 +30877,12 @@
     "suffix": "bold"
     "task": "arithmetic"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "arithmetic"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -31474,14 +31026,12 @@
     "suffix": "bold"
     "task": "arithmetic"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "SORPF"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -31624,14 +31174,12 @@
     "suffix": "bold"
     "task": "SORPF"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "SORPF"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -31775,14 +31323,12 @@
     "suffix": "bold"
     "task": "SORPF"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "SORPF"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -31925,14 +31471,12 @@
     "suffix": "bold"
     "task": "SORPF"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "SORPF"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -32076,14 +31620,12 @@
     "suffix": "bold"
     "task": "SORPF"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "SORPF"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -32226,14 +31768,12 @@
     "suffix": "bold"
     "task": "SORPF"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "SORPF"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -32377,14 +31917,12 @@
     "suffix": "bold"
     "task": "SORPF"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "SORPF"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -32527,14 +32065,12 @@
     "suffix": "bold"
     "task": "SORPF"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "SORPF"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -32678,14 +32214,12 @@
     "suffix": "bold"
     "task": "SORPF"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "SORPF"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -32828,14 +32362,12 @@
     "suffix": "bold"
     "task": "SORPF"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "SORPF"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -32979,14 +32511,12 @@
     "suffix": "bold"
     "task": "SORPF"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "SORPF"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -33129,14 +32659,12 @@
     "suffix": "bold"
     "task": "SORPF"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "SORPF"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -33280,14 +32808,12 @@
     "suffix": "bold"
     "task": "SORPF"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "SORPF"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -33430,14 +32956,12 @@
     "suffix": "bold"
     "task": "SORPF"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "SORPF"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -33581,14 +33105,12 @@
     "suffix": "bold"
     "task": "SORPF"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "SORPF"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -33731,14 +33253,12 @@
     "suffix": "bold"
     "task": "SORPF"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "SORPF"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -33882,14 +33402,12 @@
     "suffix": "bold"
     "task": "SORPF"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -34032,14 +33550,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -34183,14 +33699,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -34333,14 +33847,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -34484,14 +33996,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -34634,14 +34144,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -34785,14 +34293,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -34935,14 +34441,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -35086,14 +34590,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -35236,14 +34738,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -35387,14 +34887,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -35537,14 +35035,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -35688,14 +35184,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -35838,14 +35332,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -35989,14 +35481,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -36139,14 +35629,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -36290,14 +35778,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "3"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -36440,14 +35926,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "3"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -36591,14 +36075,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "3"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -36741,14 +36223,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "3"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -36892,14 +36372,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "3"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -37042,14 +36520,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "3"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -37193,14 +36669,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "3"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -37343,14 +36817,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "3"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -37494,14 +36966,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "4"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -37644,14 +37114,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "4"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -37795,14 +37263,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "4"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -37945,14 +37411,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "4"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -38096,14 +37560,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "4"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -38246,14 +37708,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "4"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -38397,14 +37857,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "4"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -38547,14 +38005,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "4"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -38698,14 +38154,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "5"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -38848,14 +38302,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "5"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -38999,14 +38451,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "5"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -39149,14 +38599,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "5"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -39300,14 +38748,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "5"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -39450,14 +38896,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "5"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -39601,14 +39045,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "5"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -39751,14 +39193,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "5"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -39902,14 +39342,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "6"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -40052,14 +39490,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "6"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -40203,14 +39639,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "6"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -40353,14 +39787,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "6"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -40504,14 +39936,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "6"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -40654,14 +40084,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "6"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -40805,14 +40233,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "6"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -40955,14 +40381,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "6"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -41106,16 +40530,56 @@
     "suffix": "bold"
     "task": "strangerthings"
   "session": "01"
-- "func":
+- "anat": []
+  "fmap":
+  - "acq": "func"
+    "dir": "AP"
+    "metadata": {}
+    "run": "1"
+    "suffix": "epi"
+  - "acq": "func"
+    "dir": "AP"
+    "metadata": {}
+    "run": "2"
+    "suffix": "epi"
+  - "acq": "func"
+    "dir": "AP"
+    "metadata": {}
+    "run": "3"
+    "suffix": "epi"
+  - "acq": "func"
+    "dir": "AP"
+    "metadata": {}
+    "run": "4"
+    "suffix": "epi"
+  - "acq": "func"
+    "dir": "PA"
+    "metadata": {}
+    "run": "1"
+    "suffix": "epi"
+  - "acq": "func"
+    "dir": "PA"
+    "metadata": {}
+    "run": "2"
+    "suffix": "epi"
+  - "acq": "func"
+    "dir": "PA"
+    "metadata": {}
+    "run": "3"
+    "suffix": "epi"
+  - "acq": "func"
+    "dir": "PA"
+    "metadata": {}
+    "run": "4"
+    "suffix": "epi"
+  "func":
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "localizerDetection"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -41258,14 +40722,12 @@
     "suffix": "bold"
     "task": "localizerDetection"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "localizerDetection"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -41409,14 +40871,12 @@
     "suffix": "bold"
     "task": "localizerDetection"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "localizerDetection"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -41559,14 +41019,12 @@
     "suffix": "bold"
     "task": "localizerDetection"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "localizerDetection"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -41710,14 +41168,12 @@
     "suffix": "bold"
     "task": "localizerDetection"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "localizerDetection"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -41860,14 +41316,12 @@
     "suffix": "bold"
     "task": "localizerDetection"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "localizerDetection"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -42011,14 +41465,12 @@
     "suffix": "bold"
     "task": "localizerDetection"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "localizerDetection"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -42161,14 +41613,12 @@
     "suffix": "bold"
     "task": "localizerDetection"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "localizerDetection"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -42312,14 +41762,12 @@
     "suffix": "bold"
     "task": "localizerDetection"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "localizerEstimation"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -42462,14 +41910,12 @@
     "suffix": "bold"
     "task": "localizerEstimation"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "localizerEstimation"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -42613,14 +42059,12 @@
     "suffix": "bold"
     "task": "localizerEstimation"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "localizerEstimation"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -42763,14 +42207,12 @@
     "suffix": "bold"
     "task": "localizerEstimation"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "localizerEstimation"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -42914,14 +42356,12 @@
     "suffix": "bold"
     "task": "localizerEstimation"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "localizerEstimation"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -43064,14 +42504,12 @@
     "suffix": "bold"
     "task": "localizerEstimation"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "localizerEstimation"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -43215,14 +42653,12 @@
     "suffix": "bold"
     "task": "localizerEstimation"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "localizerEstimation"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -43365,14 +42801,12 @@
     "suffix": "bold"
     "task": "localizerEstimation"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "localizerEstimation"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -43516,14 +42950,12 @@
     "suffix": "bold"
     "task": "localizerEstimation"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "PST"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -43666,14 +43098,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "PST"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -43817,14 +43247,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "PST"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -43967,14 +43395,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "PST"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -44118,14 +43544,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "PST"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -44268,14 +43692,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "PST"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -44419,14 +43841,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "PST"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -44569,14 +43989,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "PST"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -44720,14 +44138,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "PST"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -44870,14 +44286,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "PST"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -45021,14 +44435,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "PST"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -45171,14 +44583,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "PST"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -45322,14 +44732,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "PST"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -45472,14 +44880,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "PST"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -45623,14 +45029,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "PST"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -45773,14 +45177,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "PST"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -45924,14 +45326,12 @@
     "suffix": "bold"
     "task": "PST"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "rest"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -46074,14 +45474,12 @@
     "suffix": "bold"
     "task": "rest"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "rest"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -46225,14 +45623,12 @@
     "suffix": "bold"
     "task": "rest"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "rest"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -46375,14 +45771,12 @@
     "suffix": "bold"
     "task": "rest"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "rest"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -46526,14 +45920,12 @@
     "suffix": "bold"
     "task": "rest"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "rest"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -46676,14 +46068,12 @@
     "suffix": "bold"
     "task": "rest"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "rest"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -46827,14 +46217,12 @@
     "suffix": "bold"
     "task": "rest"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "rest"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -46977,14 +46365,12 @@
     "suffix": "bold"
     "task": "rest"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "rest"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -47128,14 +46514,12 @@
     "suffix": "bold"
     "task": "rest"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "rest"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -47278,14 +46662,12 @@
     "suffix": "bold"
     "task": "rest"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "rest"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -47429,14 +46811,12 @@
     "suffix": "bold"
     "task": "rest"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "rest"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -47579,14 +46959,12 @@
     "suffix": "bold"
     "task": "rest"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "rest"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -47730,14 +47108,12 @@
     "suffix": "bold"
     "task": "rest"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "rest"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -47880,14 +47256,12 @@
     "suffix": "bold"
     "task": "rest"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "rest"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -48031,14 +47405,12 @@
     "suffix": "bold"
     "task": "rest"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "rest"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -48181,14 +47553,12 @@
     "suffix": "bold"
     "task": "rest"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "rest"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -48332,14 +47702,12 @@
     "suffix": "bold"
     "task": "rest"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -48482,14 +47850,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -48633,14 +47999,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -48783,14 +48147,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -48934,14 +48296,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -49084,14 +48444,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -49235,14 +48593,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "1"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -49385,14 +48741,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "1"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -49536,14 +48890,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -49686,14 +49038,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -49837,14 +49187,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -49987,14 +49335,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -50138,14 +49484,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -50288,14 +49632,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -50439,14 +49781,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "2"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -50589,14 +49929,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "2"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -50740,14 +50078,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "3"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -50890,14 +50226,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "3"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -51041,14 +50375,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "3"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -51191,14 +50523,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "3"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -51342,14 +50672,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "3"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -51492,14 +50820,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "3"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -51643,14 +50969,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "3"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -51793,14 +51117,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "3"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -51944,14 +51266,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "4"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -52094,14 +51414,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "4"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -52245,14 +51563,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "4"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -52395,14 +51711,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "4"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -52546,14 +51860,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "4"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -52696,14 +52008,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "4"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -52847,14 +52157,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "4"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -52997,14 +52305,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "4"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -53148,14 +52454,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "5"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -53298,14 +52602,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "5"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -53449,14 +52751,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "5"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -53599,14 +52899,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "5"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -53750,14 +53048,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "5"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -53900,14 +53196,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "5"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -54051,14 +53345,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "5"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -54201,14 +53493,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "5"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -54352,14 +53642,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "6"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -54502,14 +53790,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "6"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -54653,14 +53939,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "6"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -54803,14 +54087,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "6"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -54954,14 +54236,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "6"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -55104,14 +54384,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "6"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -55255,14 +54533,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "6"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -55405,14 +54681,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "6"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -55556,14 +54830,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "7"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -55706,14 +54978,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "7"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "1"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -55857,14 +55127,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "7"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -56007,14 +55275,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "7"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "2"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -56158,14 +55424,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "7"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -56308,14 +55572,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "7"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "3"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -56459,14 +55721,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "mag"
     "run": "7"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
@@ -56609,14 +55869,12 @@
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".json"
     "metadata": {}
     "part": "phase"
     "run": "7"
     "suffix": "bold"
     "task": "strangerthings"
   - "echo": "4"
-    "extension": ".nii.gz"
     "metadata":
       "AcquisitionMatrixPE": "62"
       "AcquisitionNumber": "1"
