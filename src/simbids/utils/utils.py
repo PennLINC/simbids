@@ -29,6 +29,78 @@ import yaml
 
 LGR = logging.getLogger(__name__)
 
+# Define ordered entity lists for each modality
+# These lists define the order in which entities should appear in the YAML output
+# Using BIDS entity keys (e.g., 'ses' instead of 'session')
+DWI_ENTITIES = [
+    'sub', 'ses', 'acq', 'dir', 'run', 'rec', 'mod', 'echo', 'flip',
+    'inv', 'mt', 'part', 'ce', 'recording', 'proc', 'space', 'res', 'den',
+    'desc', 'label', 'from', 'to', 'mode', 'cohort', 'res'
+]
+
+FMAP_ENTITIES = [
+    'sub', 'ses', 'acq', 'dir', 'run', 'rec', 'mod', 'echo', 'flip',
+    'inv', 'mt', 'part', 'ce', 'recording', 'proc', 'space', 'res', 'den',
+    'desc', 'label', 'from', 'to', 'mode', 'cohort', 'res'
+]
+
+ANAT_ENTITIES = [
+    'sub', 'ses', 'acq', 'ce', 'rec', 'run', 'mod', 'echo', 'flip',
+    'inv', 'mt', 'part', 'proc', 'space', 'res', 'den', 'desc', 'label',
+    'from', 'to', 'mode', 'cohort', 'res'
+]
+
+FUNC_ENTITIES = [
+    'sub', 'ses', 'task', 'acq', 'ce', 'rec', 'dir', 'run', 'echo',
+    'recording', 'part', 'proc', 'space', 'res', 'den', 'desc', 'label',
+    'from', 'to', 'mode', 'cohort', 'res'
+]
+
+PERF_ENTITIES = [
+    'sub', 'ses', 'acq', 'rec', 'run', 'mod', 'echo', 'flip',
+    'inv', 'mt', 'part', 'proc', 'space', 'res', 'den', 'desc', 'label',
+    'from', 'to', 'mode', 'cohort', 'res'
+]
+
+# Mapping from full entity names to BIDS entity keys
+ENTITY_KEY_MAP = {
+    'subject': 'sub',
+    'session': 'ses',
+    'acquisition': 'acq',
+    'direction': 'dir',
+    'reconstruction': 'rec',
+    'modality': 'mod',
+    'echo': 'echo',
+    'flip': 'flip',
+    'inversion': 'inv',
+    'magnetization_transfer': 'mt',
+    'part': 'part',
+    'contrast_enhancement': 'ce',
+    'recording': 'recording',
+    'processing': 'proc',
+    'space': 'space',
+    'resolution': 'res',
+    'denoising': 'den',
+    'description': 'desc',
+    'label': 'label',
+    'from': 'from',
+    'to': 'to',
+    'mode': 'mode',
+    'cohort': 'cohort',
+    'res': 'res'
+}
+
+# Reverse mapping from BIDS entity keys to full names
+REVERSE_ENTITY_KEY_MAP = {v: k for k, v in ENTITY_KEY_MAP.items()}
+
+def _convert_to_bids_key(key):
+    """Convert full entity name to BIDS entity key."""
+    return ENTITY_KEY_MAP.get(key, key)
+
+def _convert_from_bids_key(key):
+    """Convert BIDS entity key to full entity name."""
+    return REVERSE_ENTITY_KEY_MAP.get(key, key)
+
 
 def _get_wf_name(bold_fname, prefix):
     """Derive the workflow name for supplied BOLD file.
@@ -176,10 +248,10 @@ def create_skeleton_from_bids(bids_dir, n_subjects, n_sessions):
                     dwi_sidecar = _sanitize_metadata(dwi_file.get_metadata())
                     entities = parse_file_entities(Path(dwi_file).name)
                     dwi_entry = {'suffix': 'dwi', 'metadata': dwi_sidecar}
-                    # Add all entities except subject and session
-                    for key, value in entities.items():
-                        if key not in ['subject', 'session', 'suffix']:
-                            dwi_entry[key] = _sanitize_value(value)
+                    for key in DWI_ENTITIES:
+                        full_key = _convert_from_bids_key(key)
+                        if full_key in entities and full_key != 'session':  # Skip session as it's handled separately
+                            dwi_entry[key] = _sanitize_value(entities[full_key])
                     skeleton[subject]['dwi'].append(dwi_entry)
 
             # Get functional data
@@ -190,11 +262,37 @@ def create_skeleton_from_bids(bids_dir, n_subjects, n_sessions):
                     func_sidecar = _sanitize_metadata(func_file.get_metadata())
                     entities = parse_file_entities(Path(func_file).name)
                     func_entry = {'suffix': 'bold', 'metadata': func_sidecar}
-                    # Add all entities except subject and session
-                    for key, value in entities.items():
-                        if key not in ['subject', 'session', 'suffix']:
-                            func_entry[key] = _sanitize_value(value)
+                    for key in FUNC_ENTITIES:
+                        full_key = _convert_from_bids_key(key)
+                        if full_key in entities and full_key != 'session':  # Skip session as it's handled separately
+                            func_entry[key] = _sanitize_value(entities[full_key])
                     skeleton[subject]['func'].append(func_entry)
+
+            # Add fmap entries
+            fmap_entries = []
+            for fmap_file in layout.get(subject=subject, suffix='epi', extension='.json'):
+                fmap_sidecar = _sanitize_metadata(fmap_file.get_metadata())
+                entities = parse_file_entities(Path(fmap_file).name)
+                fmap_entry = {'suffix': 'epi', 'metadata': fmap_sidecar}
+                for key in FMAP_ENTITIES:
+                    full_key = _convert_from_bids_key(key)
+                    if full_key in entities and full_key != 'session':  # Skip session as it's handled separately
+                        fmap_entry[key] = _sanitize_value(entities[full_key])
+                fmap_entries.append(fmap_entry)
+            skeleton[subject]['fmap'] = fmap_entries
+
+            # Add anat entries
+            anat_entries = []
+            for anat_file in layout.get(subject=subject, suffix=['T1w', 'T2w', 'FLAIR', 'PDw'], extension='.json'):
+                anat_sidecar = _sanitize_metadata(anat_file.get_metadata())
+                entities = parse_file_entities(Path(anat_file).name)
+                anat_entry = {'suffix': entities.get('suffix', ''), 'metadata': anat_sidecar}
+                for key in ANAT_ENTITIES:
+                    full_key = _convert_from_bids_key(key)
+                    if full_key in entities and full_key != 'session':  # Skip session as it's handled separately
+                        anat_entry[key] = _sanitize_value(entities[full_key])
+                anat_entries.append(anat_entry)
+            skeleton[subject]['anat'] = anat_entries
         else:
             # With sessions case - similar to multi_ses_qsiprep.yaml
             skeleton[subject] = []
@@ -230,10 +328,10 @@ def create_skeleton_from_bids(bids_dir, n_subjects, n_sessions):
                         dwi_sidecar = _sanitize_metadata(dwi_file.get_metadata())
                         entities = parse_file_entities(Path(dwi_file).name)
                         dwi_entry = {'suffix': 'dwi', 'metadata': dwi_sidecar}
-                        # Add all entities except subject and session
-                        for key, value in entities.items():
-                            if key not in ['subject', 'session', 'suffix']:
-                                dwi_entry[key] = _sanitize_value(value)
+                        for key in DWI_ENTITIES:
+                            full_key = _convert_from_bids_key(key)
+                            if full_key in entities and full_key != 'session':  # Skip session as it's handled separately
+                                dwi_entry[key] = _sanitize_value(entities[full_key])
                         session_data['dwi'].append(dwi_entry)
 
                 # Get functional data for this session
@@ -246,11 +344,37 @@ def create_skeleton_from_bids(bids_dir, n_subjects, n_sessions):
                         func_sidecar = _sanitize_metadata(func_file.get_metadata())
                         entities = parse_file_entities(Path(func_file).name)
                         func_entry = {'suffix': 'bold', 'metadata': func_sidecar}
-                        # Add all entities except subject and session
-                        for key, value in entities.items():
-                            if key not in ['subject', 'session', 'suffix']:
-                                func_entry[key] = _sanitize_value(value)
+                        for key in FUNC_ENTITIES:
+                            full_key = _convert_from_bids_key(key)
+                            if full_key in entities and full_key != 'session':  # Skip session as it's handled separately
+                                func_entry[key] = _sanitize_value(entities[full_key])
                         session_data['func'].append(func_entry)
+
+                # Add fmap entries
+                fmap_entries = []
+                for fmap_file in layout.get(subject=subject, session=session, suffix='epi', extension='.json'):
+                    fmap_sidecar = _sanitize_metadata(fmap_file.get_metadata())
+                    entities = parse_file_entities(Path(fmap_file).name)
+                    fmap_entry = {'suffix': 'epi', 'metadata': fmap_sidecar}
+                    for key in FMAP_ENTITIES:
+                        full_key = _convert_from_bids_key(key)
+                        if full_key in entities and full_key != 'session':  # Skip session as it's handled separately
+                            fmap_entry[key] = _sanitize_value(entities[full_key])
+                    fmap_entries.append(fmap_entry)
+                session_data['fmap'] = fmap_entries
+
+                # Add anat entries
+                anat_entries = []
+                for anat_file in layout.get(subject=subject, session=session, suffix=['T1w', 'T2w', 'FLAIR', 'PDw'], extension='.json'):
+                    anat_sidecar = _sanitize_metadata(anat_file.get_metadata())
+                    entities = parse_file_entities(Path(anat_file).name)
+                    anat_entry = {'suffix': entities.get('suffix', ''), 'metadata': anat_sidecar}
+                    for key in ANAT_ENTITIES:
+                        full_key = _convert_from_bids_key(key)
+                        if full_key in entities and full_key != 'session':  # Skip session as it's handled separately
+                            anat_entry[key] = _sanitize_value(entities[full_key])
+                    anat_entries.append(anat_entry)
+                session_data['anat'] = anat_entries
 
                 skeleton[subject].append(session_data)
 
@@ -286,3 +410,13 @@ def _convert_to_serializable(obj):
     if isinstance(obj, dict):
         return {k: _convert_to_serializable(v) for k, v in obj.items()}
     return str(obj)
+
+# configs = {}
+# ds_paths = ("ds002278", "ds004146", "ds005237")
+
+# for ds_path in ds_paths:
+#     configs[ds_path] = create_skeleton_from_bids(Path("..") / ds_path, 2, 3)
+#     configs[ds_path] = _convert_to_serializable(configs[ds_path])
+
+#     with open(f"src/simbids/data/bids_mri/{ds_path}_configs.yaml", "w") as f:
+#         yaml.dump(configs[ds_path], f, Dumper=BIDSDumper)

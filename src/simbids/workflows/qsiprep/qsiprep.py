@@ -56,7 +56,7 @@ def collect_data(layout, participant_label, session_id=None, filters=None):
         't2w': {'datatype': 'anat', 'suffix': 'T2w'},
         't1w': {'datatype': 'anat', 'suffix': 'T1w'},
         'roi': {'datatype': 'anat', 'suffix': 'roi'},
-        'dwi': {'datatype': 'dwi', 'part': ['mag', None], 'suffix': 'dwi'},
+        'dwi': {'datatype': 'dwi', 'suffix': 'dwi'},
     }
     bids_filters = filters or {}
     for acq in queries.keys():
@@ -313,7 +313,7 @@ dMRI data postprocessing
 
     # Create the anatomical datasinks
     anatomical_template = 'MNI152NLin6Asym'
-    for anat_file in subject_data['anat']:
+    for anat_file in subject_data['t1w']:
         workflow.add_nodes(
             [
                 pe.Node(

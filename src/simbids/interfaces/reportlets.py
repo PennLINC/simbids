@@ -120,21 +120,27 @@ class SubjectSummary(SummaryInterface):
         bold_series = self.inputs.bold if isdefined(self.inputs.bold) else []
         bold_series = [s[0] if isinstance(s, list) else s for s in bold_series]
 
-        counts = Counter(
-            BIDS_NAME.search(series).groupdict()['task_id'][5:] for series in bold_series
-        )
+        # Check if we're dealing with DWI or BOLD files
+        is_dwi = any('dwi' in series.lower() for series in bold_series)
 
         tasks = ''
-        if counts:
-            header = '\t\t<ul class="elem-desc">'
-            footer = '\t\t</ul>'
-            lines = [
-                '\t\t\t<li>Task: {task_id} ({n_runs:d} run{s})</li>'.format(
-                    task_id=task_id, n_runs=n_runs, s='' if n_runs == 1 else 's'
-                )
-                for task_id, n_runs in sorted(counts.items())
-            ]
-            tasks = '\n'.join([header] + lines + [footer])
+        if not is_dwi:
+            counts = Counter(
+                BIDS_NAME.search(series).groupdict()['task_id'][5:]
+                for series in bold_series
+                if BIDS_NAME.search(series).groupdict()['task_id'] is not None
+            )
+
+            if counts:
+                header = '\t\t<ul class="elem-desc">'
+                footer = '\t\t</ul>'
+                lines = [
+                    '\t\t\t<li>Task: {task_id} ({n_runs:d} run{s})</li>'.format(
+                        task_id=task_id, n_runs=n_runs, s='' if n_runs == 1 else 's'
+                    )
+                    for task_id, n_runs in sorted(counts.items())
+                ]
+                tasks = '\n'.join([header] + lines + [footer])
 
         return SUBJECT_TEMPLATE.format(
             subject_id=self.inputs.subject_id,
