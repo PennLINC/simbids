@@ -34,7 +34,6 @@ import json
 import sys
 from importlib import resources
 from pathlib import Path
-from re import sub
 
 import nipype.pipeline.engine as pe
 import yaml

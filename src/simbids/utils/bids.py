@@ -54,7 +54,7 @@ def write_derivative_description(input_dir, output_dir):
         Dictionary of dataset links to include in the dataset description.
     """
 
-    DOWNLOAD_URL = f'https://github.com/nipreps/simbids/archive/0.1.0.tar.gz'
+    DOWNLOAD_URL = 'https://github.com/nipreps/simbids/archive/0.1.0.tar.gz'
 
     input_dir = Path(input_dir)
     output_dir = Path(output_dir)
@@ -106,6 +106,7 @@ def write_derivative_description(input_dir, output_dir):
 
     out_desc = Path(output_dir / 'dataset_description.json')
     out_desc.write_text(json.dumps(desc, indent=4))
+
 
 def collect_derivatives(
     raw_dataset: Path | BIDSLayout | None,
