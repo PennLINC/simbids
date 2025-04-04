@@ -124,5 +124,9 @@ def init_single_subject_wf(subject_id: str):
 
         write_root_level_atlases(config.execution.output_dir)
         return init_single_subject_qsirecon_wf(subject_id)
+    elif config.workflow.bids_app == 'fmriprep':
+        from simbids.workflows.fmriprep import init_single_subject_fmriprep_wf
+
+        return init_single_subject_fmriprep_wf(subject_id)
     else:
         raise ValueError(f'Unknown application: {config.workflow.bids_app}')

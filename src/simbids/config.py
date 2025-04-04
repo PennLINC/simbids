@@ -541,6 +541,8 @@ class workflow(_Config):
     """Ignore particular steps for *SimBIDS*."""
     bids_app = 'qsiprep'
     """The BIDS App to simulate."""
+    anat_only = False
+    """Only run the anatomical workflow."""
 
 
 class loggers:
