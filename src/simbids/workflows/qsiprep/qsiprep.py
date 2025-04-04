@@ -313,132 +313,118 @@ dMRI data postprocessing
 
     # Create the anatomical datasinks
     anatomical_template = 'MNI152NLin6Asym'
-    for anat_file in subject_data['t1w']:
-        workflow.add_nodes(
-            [
-                pe.Node(
-                    DerivativesDataSink(
-                        compress=True,
-                        in_file=anat_file,
-                        source_file=anat_file,
-                        base_directory=config.execution.output_dir,
-                        space='ACPC',
-                        desc='preproc',
-                        keep_dtype=True,
-                    ),
-                    name=_get_wf_name(anat_file, 'ds_t1_preproc'),
-                    run_without_submitting=True,
+    anat_file = (subject_data['t1w'] + subject_data['t2w'])[0]
+    workflow.add_nodes(
+        [
+            pe.Node(
+                DerivativesDataSink(
+                    compress=True,
+                    in_file=anat_file,
+                    source_file=anat_file,
+                    base_directory=config.execution.output_dir,
+                    space='ACPC',
+                    desc='preproc',
+                    keep_dtype=True,
                 ),
-                pe.Node(
-                    DerivativesDataSink(
-                        compress=True,
-                        in_file=anat_file,
-                        source_file=anat_file,
-                        base_directory=config.execution.output_dir,
-                        space='ACPC',
-                        desc='brain',
-                        suffix='mask',
-                    ),
-                    name=_get_wf_name(anat_file, 'ds_t1_mask'),
-                    run_without_submitting=True,
+                name=_get_wf_name(anat_file, 'ds_t1_preproc'),
+                run_without_submitting=True,
+            ),
+            pe.Node(
+                DerivativesDataSink(
+                    compress=True,
+                    in_file=anat_file,
+                    source_file=anat_file,
+                    base_directory=config.execution.output_dir,
+                    space='ACPC',
+                    desc='brain',
+                    suffix='mask',
                 ),
-                pe.Node(
-                    DerivativesDataSink(
-                        compress=True,
-                        in_file=anat_file,
-                        source_file=anat_file,
-                        base_directory=config.execution.output_dir,
-                        space='ACPC',
-                        suffix='dseg',
-                    ),
-                    name=_get_wf_name(anat_file, 'ds_t1_seg'),
-                    run_without_submitting=True,
+                name=_get_wf_name(anat_file, 'ds_t1_mask'),
+                run_without_submitting=True,
+            ),
+            pe.Node(
+                DerivativesDataSink(
+                    compress=True,
+                    in_file=anat_file,
+                    source_file=anat_file,
+                    base_directory=config.execution.output_dir,
+                    space='ACPC',
+                    suffix='dseg',
                 ),
-                pe.Node(
-                    DerivativesDataSink(
-                        compress=True,
-                        in_file=anat_file,
-                        source_file=anat_file,
-                        base_directory=config.execution.output_dir,
-                        space='ACPC',
-                        desc='aseg',
-                        suffix='dseg',
-                    ),
-                    name=_get_wf_name(anat_file, 'ds_t1_aseg'),
-                    run_without_submitting=True,
+                name=_get_wf_name(anat_file, 'ds_t1_seg'),
+                run_without_submitting=True,
+            ),
+            pe.Node(
+                DerivativesDataSink(
+                    compress=True,
+                    in_file=anat_file,
+                    source_file=anat_file,
+                    base_directory=config.execution.output_dir,
+                    space='ACPC',
+                    desc='aseg',
+                    suffix='dseg',
                 ),
-                pe.Node(
-                    DerivativesDataSink(
-                        in_file=anat_file,
-                        source_file=anat_file,
-                        base_directory=config.execution.output_dir,
-                        to='ACPC',
-                        mode='image',
-                        suffix='xfm',
-                        **{'from': anatomical_template},
-                    ),
-                    name=_get_wf_name(anat_file, 'ds_t1_mni_inv_warp'),
-                    run_without_submitting=True,
+                name=_get_wf_name(anat_file, 'ds_t1_aseg'),
+                run_without_submitting=True,
+            ),
+            pe.Node(
+                DerivativesDataSink(
+                    in_file=anat_file,
+                    source_file=anat_file,
+                    base_directory=config.execution.output_dir,
+                    suffix='xfm',
+                    extension='.h5',
+                    **{'from': anatomical_template, 'to': 'ACPC', 'mode': 'image'},
                 ),
-                pe.Node(
-                    DerivativesDataSink(
-                        source_file=anat_file,
-                        in_file=anat_file,
-                        base_directory=config.execution.output_dir,
-                        to='ACPC',
-                        mode='image',
-                        suffix='xfm',
-                        **{'from': 'anat'},
-                    ),
-                    name=_get_wf_name(anat_file, 'ds_t1_template_acpc_transforms'),
-                    run_without_submitting=True,
+                name=_get_wf_name(anat_file, 'ds_t1_mni_inv_warp'),
+                run_without_submitting=True,
+            ),
+            pe.Node(
+                DerivativesDataSink(
+                    source_file=anat_file,
+                    in_file=text_file,
+                    base_directory=config.execution.output_dir,
+                    to='ACPC',
+                    mode='image',
+                    suffix='xfm',
+                    extension='.mat',
+                    **{'from': 'anat'},
                 ),
-                pe.Node(
-                    DerivativesDataSink(
-                        in_file=anat_file,
-                        source_file=anat_file,
-                        base_directory=config.execution.output_dir,
-                        to='anat',
-                        mode='image',
-                        suffix='xfm',
-                        **{'from': 'ACPC'},
-                    ),
-                    name=_get_wf_name(anat_file, 'ds_t1_template_acpc_inv_transforms'),
-                    run_without_submitting=True,
+                name=_get_wf_name(anat_file, 'ds_t1_template_acpc_transforms'),
+                run_without_submitting=True,
+            ),
+            pe.Node(
+                DerivativesDataSink(
+                    in_file=text_file,
+                    source_file=anat_file,
+                    base_directory=config.execution.output_dir,
+                    to='anat',
+                    mode='image',
+                    suffix='xfm',
+                    extension='.mat',
+                    **{'from': 'ACPC'},
                 ),
-                pe.Node(
-                    DerivativesDataSink(
-                        in_file=anat_file,
-                        source_file=anat_file,
-                        base_directory=config.execution.output_dir,
-                        to=anatomical_template,
-                        mode='image',
-                        suffix='xfm',
-                        **{'from': 'ACPC'},
-                    ),
-                    name=_get_wf_name(anat_file, 'ds_t1_mni_warp'),
-                    run_without_submitting=True,
+                name=_get_wf_name(anat_file, 'ds_t1_template_acpc_inv_transforms'),
+                run_without_submitting=True,
+            ),
+            pe.Node(
+                DerivativesDataSink(
+                    in_file=anat_file,
+                    source_file=anat_file,
+                    base_directory=config.execution.output_dir,
+                    to=anatomical_template,
+                    mode='image',
+                    suffix='xfm',
+                    extension='.h5',
+                    **{'from': 'ACPC'},
                 ),
-            ]
-        )
+                name=_get_wf_name(anat_file, 'ds_t1_mni_warp'),
+                run_without_submitting=True,
+            ),
+        ]
+    )
 
     return clean_datasinks(workflow)
-
-
-def init_single_dwi_run_wf(dwi_file: str):
-    """Set up a single-run workflow for SimBIDS."""
-    from niworkflows.engine.workflows import LiterateWorkflow as Workflow
-
-    workflow = Workflow(name=_get_wf_name(dwi_file, 'single_run'))
-    workflow.__desc__ = ''
-
-    # Fill in datasinks seen so far
-    for node in workflow.list_node_names():
-        if node.split('.')[-1].startswith('ds_'):
-            workflow.get_node(node).inputs.base_directory = config.execution.output_dir
-            workflow.get_node(node).inputs.source_file = dwi_file
-
-    return workflow
 
 
 def clean_datasinks(workflow: pe.Workflow) -> pe.Workflow:
