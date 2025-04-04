@@ -151,6 +151,11 @@ def _build_parser(**kwargs):
         choices=['qsiprep', 'qsirecon', 'xcp_d', 'fmriprep'],
         help=('BIDS-App to be simulated'),
     )
+    parser.add_argument(
+        '--anat-only',
+        action='store_true',
+        help=('Only run the anatomical workflow'),
+    )
 
     g_bids = parser.add_argument_group('Options for filtering BIDS queries')
     g_bids.add_argument(
