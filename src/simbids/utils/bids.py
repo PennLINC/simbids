@@ -39,6 +39,74 @@ from niworkflows.utils.spaces import SpatialReferences
 from simbids.data import load as load_data
 
 
+def write_derivative_description(input_dir, output_dir):
+    """Write dataset_description.json file for derivatives.
+
+    Parameters
+    ----------
+    input_dir : :obj:`str`
+        Path to the primary input dataset being ingested.
+        This may be a raw BIDS dataset (in the case of raw+derivatives workflows)
+        or a preprocessing derivatives dataset (in the case of derivatives-only workflows).
+    output_dir : :obj:`str`
+        Path to the output xcp-d dataset.
+    dataset_links : :obj:`dict`, optional
+        Dictionary of dataset links to include in the dataset description.
+    """
+
+    DOWNLOAD_URL = f'https://github.com/nipreps/simbids/archive/0.1.0.tar.gz'
+
+    input_dir = Path(input_dir)
+    output_dir = Path(output_dir)
+
+    orig_dset_description = os.path.join(input_dir, 'dataset_description.json')
+    if not os.path.isfile(orig_dset_description):
+        raise FileNotFoundError(f'Dataset description does not exist: {orig_dset_description}')
+
+    with open(orig_dset_description) as fobj:
+        desc = json.load(fobj)
+
+    # Update dataset description
+    desc['Name'] = 'fMRIPost-AROMA- ICA-AROMA Postprocessing Outputs'
+    desc['BIDSVersion'] = '1.9.0dev'
+    desc['DatasetType'] = 'derivative'
+    desc['HowToAcknowledge'] = 'Include the generated boilerplate in the methods section.'
+
+    # Start with GeneratedBy from the primary input dataset's dataset_description.json
+    desc['GeneratedBy'] = desc.get('GeneratedBy', [])
+
+    # Add GeneratedBy from fMRIPost-AROMA
+    desc['GeneratedBy'].insert(
+        0,
+        {
+            'Name': 'SimBIDS',
+            'Version': '0.1.0',
+            'CodeURL': DOWNLOAD_URL,
+        },
+    )
+
+    # Keys that can only be set by environment
+    if 'SIMBIDS_SINGULARITY_URL' in os.environ:
+        desc['GeneratedBy'][0]['Container'] = {
+            'Type': 'singularity',
+            'URI': os.getenv('SIMBIDS_SINGULARITY_URL'),
+        }
+
+    # Replace local templateflow path with URL
+    dataset_links = {}
+    dataset_links['templateflow'] = 'https://github.com/templateflow/templateflow'
+
+    # Add DatasetLinks
+    desc['DatasetLinks'] = desc.get('DatasetLinks', {})
+    for k, v in dataset_links.items():
+        if k in desc['DatasetLinks'].keys() and str(desc['DatasetLinks'][k]) != str(v):
+            print(f'"{k}" is already a dataset link. Overwriting.')
+
+        desc['DatasetLinks'][k] = str(v)
+
+    out_desc = Path(output_dir / 'dataset_description.json')
+    out_desc.write_text(json.dumps(desc, indent=4))
+
 def collect_derivatives(
     raw_dataset: Path | BIDSLayout | None,
     derivatives_dataset: Path | BIDSLayout | None,

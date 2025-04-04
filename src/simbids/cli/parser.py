@@ -147,7 +147,7 @@ def _build_parser(**kwargs):
     )
 
     parser.add_argument(
-        'bids_app',
+        '--bids-app',
         choices=['qsiprep', 'qsirecon', 'xcp_d', 'fmriprep'],
         help=('BIDS-App to be simulated'),
     )

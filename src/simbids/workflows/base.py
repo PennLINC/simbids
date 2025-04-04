@@ -35,6 +35,7 @@ from copy import deepcopy
 from packaging.version import Version
 
 from simbids import config
+from ..utils.bids import write_derivative_description
 
 
 def init_simbids_wf():
@@ -61,7 +62,9 @@ def init_simbids_wf():
 
     simbids_wf = Workflow(name=f'simbids_{ver.major}_{ver.minor}_wf')
     simbids_wf.base_dir = config.execution.work_dir
-
+    write_derivative_description(
+        config.execution.bids_dir,
+        config.execution.output_dir)
     for subject_id in config.execution.participant_label:
         single_subject_wf = init_single_subject_wf(subject_id)
 
@@ -114,5 +117,10 @@ def init_single_subject_wf(subject_id: str):
         from simbids.workflows.qsiprep import init_single_subject_qsiprep_wf
 
         return init_single_subject_qsiprep_wf(subject_id)
+    elif config.workflow.bids_app == 'qsirecon':
+        from simbids.workflows.qsirecon import init_single_subject_qsirecon_wf, write_root_level_atlases
+
+        write_root_level_atlases(config.execution.output_dir)
+        return init_single_subject_qsirecon_wf(subject_id)
     else:
-        raise ValueError(f'Unknown application: {config.workflow.simulated_app}')
+        raise ValueError(f'Unknown application: {config.workflow.bids_app}')
