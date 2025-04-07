@@ -20,6 +20,7 @@ classifiers = [
 dependencies = [
   "acres",
   "nipype",
+  "niworkflows",
   "nireports",
   "pybids >= 0.15.6",
   "typer",

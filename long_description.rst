@@ -1,13 +1,5 @@
 SimBIDS is a postprocessing BIDS App that ingests preprocessed fMRI data for post-processing.
 
-The workflow is based on `Nipype <https://nipype.readthedocs.io>`_ and encompasses a large
-set of tools from well-known neuroimaging packages, including
-`FSL <https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/>`_,
-`ANTs <https://stnava.github.io/ANTs/>`_,
-`FreeSurfer <https://surfer.nmr.mgh.harvard.edu/>`_,
-`AFNI <https://afni.nimh.nih.gov/>`_,
-and `Nilearn <https://nilearn.github.io/>`_.
-
 [Documentation `simbids.org <https://simbids.readthedocs.io>`_]
 [Support `neurostars.org <https://neurostars.org/tags/simbids>`_]
 

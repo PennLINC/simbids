@@ -22,21 +22,46 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-#
-# Build wheel
-#
-FROM python:slim AS src
-RUN pip install build
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends git
+# Build stage
+FROM python:3.11-slim AS builder
+
+# Install build dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create and activate virtual environment
+ENV VIRTUAL_ENV=/opt/venv
+RUN python -m venv $VIRTUAL_ENV
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+
+# Install build tools
+RUN pip install --no-cache-dir build
+
+# Copy entire project (including .git)
 COPY . /src
-RUN python -m build /src
+WORKDIR /src
 
-FROM python:slim
-# Installing SimBIDS
-COPY --from=src /src/dist/*.whl .
-RUN pip install --no-cache-dir $( ls *.whl )
+# Build and install the package
+RUN python -m build
+RUN pip install --no-cache-dir dist/*.whl
 
+# Final stage
+FROM python:3.11-slim
 
-WORKDIR /tmp
-ENTRYPOINT ["simbids"]
+# Copy virtual environment from builder
+COPY --from=builder /opt/venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
+
+# Set working directory
+WORKDIR /app
+
+# Copy application code
+COPY . .
+
+# Set environment variables
+ENV PYTHONPATH=/app
+
+# Run the application
+CMD ["python", "-m", "simbids"]
