@@ -63,11 +63,6 @@ def _build_parser(**kwargs):
         help='Fill the files with random data.',
     )
 
-    parser.add_argument(
-        '--datalad-init',
-        action='store_true',
-        help='Initialize a datalad dataset in the output directory.',
-    )
     return parser
 
 
@@ -84,11 +79,11 @@ def main():
         if not config_path.exists():
             raise FileNotFoundError(f'Config file {args.config_file} not found')
         # For custom config files, pass the string path
-        simulate_dataset(args.bids_dir, str(config_path), args.fill_files, args.datalad_init)
+        simulate_dataset(args.bids_dir, str(config_path), args.fill_files)
     else:
         LGR.info(f'Using bundled config file: {args.config_file}')
         # For bundled config files, pass the filename directly
-        simulate_dataset(args.bids_dir, args.config_file, args.fill_files, args.datalad_init)
+        simulate_dataset(args.bids_dir, args.config_file, args.fill_files)
 
 
 if __name__ == '__main__':

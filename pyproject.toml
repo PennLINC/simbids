@@ -57,9 +57,9 @@ maint = [
 all = ["simbids[doc,maint,test]"]
 
 [project.urls]
-Documentation = "https://github.com/nipreps/simbids#readme"
-Issues = "https://github.com/nipreps/simbids/issues"
-Source = "https://github.com/nipreps/simbids"
+Documentation = "https://github.com/pennlinc/simbids#readme"
+Issues = "https://github.com/pennlinc/simbids/issues"
+Source = "https://github.com/pennlinc/simbids"
 
 [project.scripts]
 simbids = "simbids.cli.run:main"

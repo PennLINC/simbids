@@ -31,7 +31,6 @@ from copy import deepcopy
 from importlib import resources
 from pathlib import Path
 
-import datalad.api as dlapi
 import yaml
 from bids.layout import BIDSLayout, Query
 from niworkflows.utils.spaces import SpatialReferences
@@ -415,7 +414,7 @@ def combine_entities(**entities):
     return f'_{"_".join([f"{lab}-{val}" for lab, val in entities.items()])}' if entities else ''
 
 
-def simulate_dataset(output_dir, yaml_file, fill_files=False, datalad_init=False):
+def simulate_dataset(output_dir, yaml_file, fill_files=False):
     """Create a mock zipped input dataset with n_subjects, each with n_sessions.
 
     Parameters
@@ -426,9 +425,6 @@ def simulate_dataset(output_dir, yaml_file, fill_files=False, datalad_init=False
         The name of the YAML file to use for the BIDS skeleton.
     fill_files : bool, optional
         Whether to fill the files with random data.
-        Default is False.
-    datalad_init : bool, optional
-        Whether to initialize a datalad dataset in the output directory.
         Default is False.
 
     Returns
@@ -461,12 +457,5 @@ def simulate_dataset(output_dir, yaml_file, fill_files=False, datalad_init=False
         for file_path in dataset_dir.rglob('*.nii.gz'):
             with open(file_path, 'wb') as f:
                 f.write(os.urandom(10 * 1024 * 1024))  # 10MB of random data
-
-    if datalad_init:
-        # initialize a datalad dataset in input_dataset
-        dlapi.create(path=output_dir, force=True)
-
-        # Datalad save the zip files
-        dlapi.save(dataset=output_dir, message='Add dataset')
 
     return output_dir
