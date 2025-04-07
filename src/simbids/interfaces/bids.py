@@ -102,3 +102,27 @@ class NiPrepsDerivativesDataSink(BaseDerivativesDataSink):
     _config_entities = config_entities
     _config_entities_dict = merged_entities
     _file_patterns = simbids_spec['default_path_patterns']
+
+
+class XCPDDerivativesDataSink(BaseDerivativesDataSink):
+    """Store derivative files.
+
+    A child class of the niworkflows DerivativesDataSink,
+    using simbids's configuration files.
+    """
+
+    simbids_spec = loads(load_data('xcpd_io_spec.json').read_text())
+    bids_config = Config.load('bids')
+    deriv_config = Config.load('derivatives')
+
+    simbids_entities = {v['name']: v['pattern'] for v in simbids_spec.get('entities', {})}
+    merged_entities = {**bids_config.entities, **deriv_config.entities}
+    merged_entities = {k: v.pattern for k, v in merged_entities.items()}
+    merged_entities = {**merged_entities, **simbids_entities}
+    merged_entities = [{'name': k, 'pattern': v} for k, v in merged_entities.items()]
+    config_entities = frozenset({e['name'] for e in merged_entities})
+    out_path_base = ''
+    _allowed_entities = set(config_entities)
+    _config_entities = config_entities
+    _config_entities_dict = merged_entities
+    _file_patterns = simbids_spec['default_path_patterns']
