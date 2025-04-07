@@ -128,5 +128,11 @@ def init_single_subject_wf(subject_id: str):
         from simbids.workflows.fmriprep import init_single_subject_fmriprep_wf
 
         return init_single_subject_fmriprep_wf(subject_id)
+    elif config.workflow.bids_app == 'xcp_d':
+        from simbids.workflows.qsirecon import write_root_level_atlases
+        from simbids.workflows.xcp_d.xcp_d import init_single_subject_xcp_d_wf
+
+        write_root_level_atlases(config.execution.output_dir)
+        return init_single_subject_xcp_d_wf(subject_id)
     else:
         raise ValueError(f'Unknown application: {config.workflow.bids_app}')

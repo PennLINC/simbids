@@ -30,9 +30,8 @@ SimBIDS workflows
 
 """
 
-import os
 import sys
-from collections import defaultdict
+from importlib import resources
 
 import nipype.pipeline.engine as pe
 import yaml
@@ -40,48 +39,69 @@ from niworkflows.engine.workflows import LiterateWorkflow as Workflow
 from niworkflows.interfaces.bids import BIDSInfo
 
 from simbids import config
-from simbids.interfaces.bids import DerivativesDataSink
+from simbids.interfaces.bids import XCPDDerivativesDataSink as DerivativesDataSink
 from simbids.interfaces.reportlets import AboutSummary, SubjectSummary
-from simbids.utils.utils import _get_wf_name, update_dict
+from simbids.utils.utils import _get_wf_name
+
+text_file = resources.files('simbids').joinpath('data/text_file.txt')
 
 
-def init_single_subject_fmripost_wf(subject_id: str):
+def collect_data(layout, participant_label, session_id=None, filters=None):
+    """Use pybids to retrieve the input data for a given participant."""
+
+    from bids.layout import Query
+
+    queries = {
+        'fmap': {'datatype': 'fmap'},
+        'sbref': {'datatype': 'func', 'suffix': 'sbref'},
+        'flair': {'datatype': 'anat', 'suffix': 'FLAIR'},
+        't2w': {'datatype': 'anat', 'suffix': 'T2w'},
+        't1w': {'datatype': 'anat', 'suffix': 'T1w'},
+        'roi': {'datatype': 'anat', 'suffix': 'roi'},
+        'bold': {'datatype': 'func', 'suffix': 'bold'},
+    }
+    bids_filters = filters or {}
+    for acq in queries.keys():
+        entities = bids_filters.get(acq, {})
+
+        if ('session' in entities.keys()) and (session_id is not None):
+            config.loggers.workflow.warning(
+                'BIDS filter file value for session may conflict with values specified '
+                'on the command line'
+            )
+        queries[acq]['session'] = session_id or Query.OPTIONAL
+        queries[acq].update(entities)
+
+    subj_data = {
+        dtype: sorted(
+            layout.get(
+                return_type='file',
+                subject=participant_label,
+                extension=['nii', 'nii.gz'],
+                **query,
+            )
+        )
+        for dtype, query in queries.items()
+    }
+
+    config.loggers.workflow.log(
+        25,
+        f'Collected data:\n{yaml.dump(subj_data, default_flow_style=False, indent=4)}',
+    )
+
+    return subj_data
+
+
+def init_single_subject_xcp_d_wf(subject_id: str):
     """Organize the postprocessing pipeline for a single subject."""
     from bids.utils import listify
-
-    from simbids.utils.bids import collect_derivatives
 
     entities = config.execution.bids_filters or {}
     entities['subject'] = subject_id
 
-    if config.execution.derivatives:
-        # Raw dataset + derivatives dataset
-        config.loggers.workflow.info('Raw+derivatives workflow mode enabled')
-        # Just build a list of BOLD files right now
-        subject_data = collect_derivatives(
-            raw_dataset=config.execution.layout,
-            derivatives_dataset=None,
-            entities=entities,
-            fieldmap_id=None,
-            allow_multiple=True,
-            spaces=None,
-            bids_app='xcp_d',
-        )
-        subject_data['bold'] = listify(subject_data['bold_raw'])
-    else:
-        # Derivatives dataset only
-        config.loggers.workflow.info('Derivatives-only workflow mode enabled')
-        # Just build a list of BOLD files right now
-        subject_data = collect_derivatives(
-            raw_dataset=None,
-            derivatives_dataset=config.execution.layout,
-            entities=entities,
-            fieldmap_id=None,
-            allow_multiple=True,
-            spaces=None,
-        )
-        # Patch standard-space BOLD files into 'bold' key
-        subject_data['bold'] = listify(subject_data['bold_mni152nlin6asym'])
+    # Just build a list of BOLD files right now
+    subject_data = collect_data(config.execution.layout, subject_id)
+    subject_data['bold'] = listify(subject_data['bold'])
 
     workflow = Workflow(name=f'sub_{subject_id}_wf')
     workflow.__desc__ = f"""
@@ -185,123 +205,619 @@ Functional data postprocessing
 """
     workflow.__desc__ += func_pre_desc
 
+    anat_file = (subject_data['t1w'] + subject_data['t2w'])[0]
+    workflow.add_nodes(_get_anat_datasinks(anat_file))
     for bold_file in subject_data['bold']:
-        single_run_wf = init_single_run_wf(bold_file)
-        workflow.add_nodes([single_run_wf])
+        workflow.add_nodes(_get_bold_datasinks(bold_file))
 
     return clean_datasinks(workflow)
 
 
-def init_single_run_wf(bold_file: str):
-    """Set up a single-run workflow for SimBIDS."""
-    from niworkflows.engine.workflows import LiterateWorkflow as Workflow
-
-    from simbids.utils.bids import collect_derivatives, extract_entities
-
-    spaces = config.workflow.spaces
-
-    workflow = Workflow(name=_get_wf_name(bold_file, 'single_run'))
-    workflow.__desc__ = ''
-
-    entities = extract_entities(bold_file)
-
-    # Attempt to extract the associated fmap ID
-    fmapid = None
-    all_fmapids = config.execution.layout.get_fmapids(
-        subject=entities['subject'],
-        session=entities.get('session', None),
-    )
-    if all_fmapids:
-        fmap_file = config.execution.layout.get_nearest(
-            bold_file,
-            to=all_fmapids,
-            suffix='xfm',
-            extension='.txt',
-            strict=False,
-            **{'from': 'boldref'},
-        )
-        fmapid = config.execution.layout.get_file(fmap_file).entities['to']
-
-    functional_cache = defaultdict(list, {})
-    if config.execution.derivatives:
-        # Collect native-space derivatives and transforms
-        functional_cache = collect_derivatives(
-            raw_dataset=config.execution.layout,
-            derivatives_dataset=None,
-            entities=entities,
-            fieldmap_id=fmapid,
-            allow_multiple=False,
-            spaces=None,
-        )
-        for deriv_dir in config.execution.derivatives.values():
-            functional_cache = update_dict(
-                functional_cache,
-                collect_derivatives(
-                    raw_dataset=None,
-                    derivatives_dataset=deriv_dir,
-                    entities=entities,
-                    fieldmap_id=fmapid,
-                    allow_multiple=False,
-                    spaces=spaces,
-                ),
-            )
-
-        if not functional_cache['bold_confounds']:
-            if config.workflow.dummy_scans is None:
-                raise ValueError(
-                    'No confounds detected. '
-                    'Automatical dummy scan detection cannot be performed. '
-                    'Please set the `--dummy-scans` flag explicitly.'
-                )
-
-            # TODO: Calculate motion parameters from motion correction transform
-            raise ValueError('No confounds detected.')
-
-    else:
-        # Collect MNI152NLin6Asym:res-2 derivatives
-        # Only derivatives dataset was passed in, so we expected standard-space derivatives
-        functional_cache.update(
-            collect_derivatives(
-                raw_dataset=None,
-                derivatives_dataset=config.execution.layout,
-                entities=entities,
-                fieldmap_id=fmapid,
-                allow_multiple=False,
-                spaces=spaces,
+def _get_anat_datasinks(anat_file: str):
+    return [
+        # Preprocessed T1w image
+        pe.Node(
+            DerivativesDataSink(
+                source_file=anat_file,
+                in_file=anat_file,
+                base_directory=config.execution.output_dir,
+                space='MNI152NLin6Asym',
+                desc='preproc',
+                suffix='T1w',
+                extension='.nii.gz',
+                datatype='anat',
+                acquisition='refaced',
             ),
-        )
-
-    config.loggers.workflow.info(
-        (
-            f'Collected run data for {os.path.basename(bold_file)}:\n'
-            f'{yaml.dump(functional_cache, default_flow_style=False, indent=4)}'
+            name=_get_wf_name(anat_file, 'ds_anat_t1w_preproc'),
+            run_without_submitting=True,
         ),
-    )
+        # Left hemisphere surface files
+        pe.Node(
+            DerivativesDataSink(
+                source_file=anat_file,
+                in_file=anat_file,
+                base_directory=config.execution.output_dir,
+                space='fsLR',
+                hemi='L',
+                density='32k',
+                desc='hcp',
+                suffix='inflated',
+                extension='.surf.gii',
+                datatype='anat',
+                acquisition='refaced',
+            ),
+            name=_get_wf_name(anat_file, 'ds_anat_lh_inflated'),
+            run_without_submitting=True,
+        ),
+        pe.Node(
+            DerivativesDataSink(
+                source_file=anat_file,
+                in_file=anat_file,
+                base_directory=config.execution.output_dir,
+                space='fsLR',
+                hemi='L',
+                density='32k',
+                desc='hcp',
+                suffix='midthickness',
+                extension='.surf.gii',
+                datatype='anat',
+                acquisition='refaced',
+            ),
+            name=_get_wf_name(anat_file, 'ds_anat_lh_midthickness'),
+            run_without_submitting=True,
+        ),
+        pe.Node(
+            DerivativesDataSink(
+                source_file=anat_file,
+                in_file=anat_file,
+                base_directory=config.execution.output_dir,
+                space='fsLR',
+                hemi='L',
+                density='32k',
+                desc='hcp',
+                suffix='vinflated',
+                extension='.surf.gii',
+                datatype='anat',
+                acquisition='refaced',
+            ),
+            name=_get_wf_name(anat_file, 'ds_anat_lh_vinflated'),
+            run_without_submitting=True,
+        ),
+        pe.Node(
+            DerivativesDataSink(
+                source_file=anat_file,
+                in_file=anat_file,
+                base_directory=config.execution.output_dir,
+                space='fsLR',
+                hemi='L',
+                density='32k',
+                suffix='pial',
+                extension='.surf.gii',
+                datatype='anat',
+                acquisition='refaced',
+            ),
+            name=_get_wf_name(anat_file, 'ds_anat_lh_pial'),
+            run_without_submitting=True,
+        ),
+        pe.Node(
+            DerivativesDataSink(
+                source_file=anat_file,
+                in_file=anat_file,
+                base_directory=config.execution.output_dir,
+                space='fsLR',
+                hemi='L',
+                density='32k',
+                suffix='white',
+                extension='.surf.gii',
+                datatype='anat',
+                acquisition='refaced',
+            ),
+            name=_get_wf_name(anat_file, 'ds_anat_lh_white'),
+            run_without_submitting=True,
+        ),
+        # Right hemisphere surface files
+        pe.Node(
+            DerivativesDataSink(
+                source_file=anat_file,
+                in_file=anat_file,
+                base_directory=config.execution.output_dir,
+                space='fsLR',
+                hemi='R',
+                density='32k',
+                desc='hcp',
+                suffix='inflated',
+                extension='.surf.gii',
+                datatype='anat',
+                acquisition='refaced',
+            ),
+            name=_get_wf_name(anat_file, 'ds_anat_rh_inflated'),
+            run_without_submitting=True,
+        ),
+        pe.Node(
+            DerivativesDataSink(
+                source_file=anat_file,
+                in_file=anat_file,
+                base_directory=config.execution.output_dir,
+                space='fsLR',
+                hemi='R',
+                density='32k',
+                desc='hcp',
+                suffix='midthickness',
+                extension='.surf.gii',
+                datatype='anat',
+                acquisition='refaced',
+            ),
+            name=_get_wf_name(anat_file, 'ds_anat_rh_midthickness'),
+            run_without_submitting=True,
+        ),
+        pe.Node(
+            DerivativesDataSink(
+                source_file=anat_file,
+                in_file=anat_file,
+                base_directory=config.execution.output_dir,
+                space='fsLR',
+                hemi='R',
+                density='32k',
+                desc='hcp',
+                suffix='vinflated',
+                extension='.surf.gii',
+                datatype='anat',
+                acquisition='refaced',
+            ),
+            name=_get_wf_name(anat_file, 'ds_anat_rh_vinflated'),
+            run_without_submitting=True,
+        ),
+        pe.Node(
+            DerivativesDataSink(
+                source_file=anat_file,
+                in_file=anat_file,
+                base_directory=config.execution.output_dir,
+                space='fsLR',
+                hemi='R',
+                density='32k',
+                suffix='pial',
+                extension='.surf.gii',
+                datatype='anat',
+                acquisition='refaced',
+            ),
+            name=_get_wf_name(anat_file, 'ds_anat_rh_pial'),
+            run_without_submitting=True,
+        ),
+        pe.Node(
+            DerivativesDataSink(
+                source_file=anat_file,
+                in_file=anat_file,
+                base_directory=config.execution.output_dir,
+                space='fsLR',
+                hemi='R',
+                density='32k',
+                suffix='white',
+                extension='.surf.gii',
+                datatype='anat',
+                acquisition='refaced',
+            ),
+            name=_get_wf_name(anat_file, 'ds_anat_rh_white'),
+            run_without_submitting=True,
+        ),
+        # Scalar files
+        pe.Node(
+            DerivativesDataSink(
+                source_file=anat_file,
+                in_file=anat_file,
+                base_directory=config.execution.output_dir,
+                space='fsLR',
+                density='91k',
+                suffix='curv',
+                extension='.dscalar.nii',
+                datatype='anat',
+                acquisition='refaced',
+            ),
+            name=_get_wf_name(anat_file, 'ds_anat_curv'),
+            run_without_submitting=True,
+        ),
+        pe.Node(
+            DerivativesDataSink(
+                source_file=anat_file,
+                in_file=anat_file,
+                base_directory=config.execution.output_dir,
+                space='fsLR',
+                density='91k',
+                suffix='sulc',
+                extension='.dscalar.nii',
+                datatype='anat',
+                acquisition='refaced',
+            ),
+            name=_get_wf_name(anat_file, 'ds_anat_sulc'),
+            run_without_submitting=True,
+        ),
+        pe.Node(
+            DerivativesDataSink(
+                source_file=anat_file,
+                in_file=anat_file,
+                base_directory=config.execution.output_dir,
+                space='fsLR',
+                density='91k',
+                suffix='thickness',
+                extension='.dscalar.nii',
+                datatype='anat',
+                acquisition='refaced',
+            ),
+            name=_get_wf_name(anat_file, 'ds_anat_thickness'),
+            run_without_submitting=True,
+        ),
+        # Morphology statistics
+        pe.Node(
+            DerivativesDataSink(
+                source_file=anat_file,
+                in_file=text_file,
+                base_directory=config.execution.output_dir,
+                space='fsLR',
+                seg='MyersLabonte',
+                statistic='mean',
+                desc='curv',
+                suffix='morph',
+                extension='.tsv',
+                datatype='anat',
+                acquisition='refaced',
+            ),
+            name=_get_wf_name(anat_file, 'ds_anat_curv_morph'),
+            run_without_submitting=True,
+        ),
+        pe.Node(
+            DerivativesDataSink(
+                source_file=anat_file,
+                in_file=text_file,
+                base_directory=config.execution.output_dir,
+                space='fsLR',
+                seg='MyersLabonte',
+                statistic='mean',
+                desc='sulc',
+                suffix='morph',
+                extension='.tsv',
+                datatype='anat',
+                acquisition='refaced',
+            ),
+            name=_get_wf_name(anat_file, 'ds_anat_sulc_morph'),
+            run_without_submitting=True,
+        ),
+        pe.Node(
+            DerivativesDataSink(
+                source_file=anat_file,
+                in_file=text_file,
+                base_directory=config.execution.output_dir,
+                space='fsLR',
+                seg='MyersLabonte',
+                statistic='mean',
+                desc='thickness',
+                suffix='morph',
+                extension='.tsv',
+                datatype='anat',
+                acquisition='refaced',
+            ),
+            name=_get_wf_name(anat_file, 'ds_anat_thickness_morph'),
+            run_without_submitting=True,
+        ),
+    ]
 
-    if config.workflow.dummy_scans is not None:
-        skip_vols = config.workflow.dummy_scans
-    else:
-        if not functional_cache['bold_confounds']:
-            raise ValueError(
-                'No confounds detected. '
-                'Automatical dummy scan detection cannot be performed. '
-                'Please set the `--dummy-scans` flag explicitly.'
-            )
-        skip_vols = get_nss(functional_cache['bold_confounds'])
 
-    print(skip_vols)  # just to circumvent flake8 warning
-
-    # Fill in datasinks seen so far
-    for node in workflow.list_node_names():
-        if node.split('.')[-1].startswith('ds_'):
-            workflow.get_node(node).inputs.base_directory = config.execution.output_dir
-            workflow.get_node(node).inputs.source_file = bold_file
-
-    return workflow
-
-
-def _prefix(subid):
-    return subid if subid.startswith('sub-') else f'sub-{subid}'
+def _get_bold_datasinks(bold_file: str):
+    return [
+        # Denoised and smoothed BOLD images
+        pe.Node(
+            DerivativesDataSink(
+                source_file=bold_file,
+                in_file=bold_file,
+                base_directory=config.execution.output_dir,
+                space='MNI152NLin2009cAsym',
+                desc='denoisedSmoothed',
+                suffix='bold',
+                extension='.nii.gz',
+                datatype='func',
+            ),
+            name=_get_wf_name(bold_file, 'ds_bold_denoised_smoothed'),
+            run_without_submitting=True,
+        ),
+        pe.Node(
+            DerivativesDataSink(
+                source_file=bold_file,
+                in_file=bold_file,
+                base_directory=config.execution.output_dir,
+                space='MNI152NLin2009cAsym',
+                desc='denoised',
+                suffix='bold',
+                extension='.nii.gz',
+                datatype='func',
+            ),
+            name=_get_wf_name(bold_file, 'ds_bold_denoised'),
+            run_without_submitting=True,
+        ),
+        # QC files
+        pe.Node(
+            DerivativesDataSink(
+                source_file=bold_file,
+                in_file=text_file,
+                base_directory=config.execution.output_dir,
+                space='MNI152NLin2009cAsym',
+                desc='linc',
+                suffix='qc',
+                extension='.tsv',
+                datatype='func',
+            ),
+            name=_get_wf_name(bold_file, 'ds_bold_linc_qc'),
+            run_without_submitting=True,
+        ),
+        # 4S156Parcels outputs
+        pe.Node(
+            DerivativesDataSink(
+                source_file=bold_file,
+                in_file=bold_file,
+                base_directory=config.execution.output_dir,
+                space='MNI152NLin2009cAsym',
+                seg='4S156Parcels',
+                statistic='coverage',
+                suffix='bold',
+                extension='.json',
+                datatype='func',
+            ),
+            name=_get_wf_name(bold_file, 'ds_bold_4s156_coverage_json'),
+            run_without_submitting=True,
+        ),
+        pe.Node(
+            DerivativesDataSink(
+                source_file=bold_file,
+                in_file=text_file,
+                base_directory=config.execution.output_dir,
+                space='MNI152NLin2009cAsym',
+                seg='4S156Parcels',
+                statistic='coverage',
+                suffix='bold',
+                extension='.tsv',
+                datatype='func',
+            ),
+            name=_get_wf_name(bold_file, 'ds_bold_4s156_coverage_tsv'),
+            run_without_submitting=True,
+        ),
+        pe.Node(
+            DerivativesDataSink(
+                source_file=bold_file,
+                in_file=bold_file,
+                base_directory=config.execution.output_dir,
+                space='MNI152NLin2009cAsym',
+                seg='4S156Parcels',
+                statistic='mean',
+                suffix='timeseries',
+                extension='.json',
+                datatype='func',
+            ),
+            name=_get_wf_name(bold_file, 'ds_bold_4s156_mean_ts_json'),
+            run_without_submitting=True,
+        ),
+        pe.Node(
+            DerivativesDataSink(
+                source_file=bold_file,
+                in_file=text_file,
+                base_directory=config.execution.output_dir,
+                space='MNI152NLin2009cAsym',
+                seg='4S156Parcels',
+                statistic='mean',
+                suffix='timeseries',
+                extension='.tsv',
+                datatype='func',
+            ),
+            name=_get_wf_name(bold_file, 'ds_bold_4s156_mean_ts_tsv'),
+            run_without_submitting=True,
+        ),
+        pe.Node(
+            DerivativesDataSink(
+                source_file=bold_file,
+                in_file=bold_file,
+                base_directory=config.execution.output_dir,
+                space='MNI152NLin2009cAsym',
+                seg='4S156Parcels',
+                statistic='pearsoncorrelation',
+                suffix='relmat',
+                extension='.json',
+                datatype='func',
+            ),
+            name=_get_wf_name(bold_file, 'ds_bold_4s156_corr_json'),
+            run_without_submitting=True,
+        ),
+        pe.Node(
+            DerivativesDataSink(
+                source_file=bold_file,
+                in_file=text_file,
+                base_directory=config.execution.output_dir,
+                space='MNI152NLin2009cAsym',
+                seg='4S156Parcels',
+                statistic='pearsoncorrelation',
+                suffix='relmat',
+                extension='.tsv',
+                datatype='func',
+            ),
+            name=_get_wf_name(bold_file, 'ds_bold_4s156_corr_tsv'),
+            run_without_submitting=True,
+        ),
+        pe.Node(
+            DerivativesDataSink(
+                source_file=bold_file,
+                in_file=bold_file,
+                base_directory=config.execution.output_dir,
+                space='MNI152NLin2009cAsym',
+                seg='4S156Parcels',
+                statistic='reho',
+                suffix='bold',
+                extension='.json',
+                datatype='func',
+            ),
+            name=_get_wf_name(bold_file, 'ds_bold_4s156_reho_json'),
+            run_without_submitting=True,
+        ),
+        pe.Node(
+            DerivativesDataSink(
+                source_file=bold_file,
+                in_file=text_file,
+                base_directory=config.execution.output_dir,
+                space='MNI152NLin2009cAsym',
+                seg='4S156Parcels',
+                statistic='reho',
+                suffix='bold',
+                extension='.tsv',
+                datatype='func',
+            ),
+            name=_get_wf_name(bold_file, 'ds_bold_4s156_reho_tsv'),
+            run_without_submitting=True,
+        ),
+        # Schaefer100 outputs
+        pe.Node(
+            DerivativesDataSink(
+                source_file=bold_file,
+                in_file=bold_file,
+                base_directory=config.execution.output_dir,
+                space='MNI152NLin2009cAsym',
+                seg='Schaefer100',
+                statistic='coverage',
+                suffix='bold',
+                extension='.json',
+                datatype='func',
+            ),
+            name=_get_wf_name(bold_file, 'ds_bold_schaefer_coverage_json'),
+            run_without_submitting=True,
+        ),
+        pe.Node(
+            DerivativesDataSink(
+                source_file=bold_file,
+                in_file=text_file,
+                base_directory=config.execution.output_dir,
+                space='MNI152NLin2009cAsym',
+                seg='Schaefer100',
+                statistic='coverage',
+                suffix='bold',
+                extension='.tsv',
+                datatype='func',
+            ),
+            name=_get_wf_name(bold_file, 'ds_bold_schaefer_coverage_tsv'),
+            run_without_submitting=True,
+        ),
+        pe.Node(
+            DerivativesDataSink(
+                source_file=bold_file,
+                in_file=bold_file,
+                base_directory=config.execution.output_dir,
+                space='MNI152NLin2009cAsym',
+                seg='Schaefer100',
+                statistic='mean',
+                suffix='timeseries',
+                extension='.json',
+                datatype='func',
+            ),
+            name=_get_wf_name(bold_file, 'ds_bold_schaefer_mean_ts_json'),
+            run_without_submitting=True,
+        ),
+        pe.Node(
+            DerivativesDataSink(
+                source_file=bold_file,
+                in_file=text_file,
+                base_directory=config.execution.output_dir,
+                space='MNI152NLin2009cAsym',
+                seg='Schaefer100',
+                statistic='mean',
+                suffix='timeseries',
+                extension='.tsv',
+                datatype='func',
+            ),
+            name=_get_wf_name(bold_file, 'ds_bold_schaefer_mean_ts_tsv'),
+            run_without_submitting=True,
+        ),
+        pe.Node(
+            DerivativesDataSink(
+                source_file=bold_file,
+                in_file=bold_file,
+                base_directory=config.execution.output_dir,
+                space='MNI152NLin2009cAsym',
+                seg='Schaefer100',
+                statistic='pearsoncorrelation',
+                suffix='relmat',
+                extension='.json',
+                datatype='func',
+            ),
+            name=_get_wf_name(bold_file, 'ds_bold_schaefer_corr_json'),
+            run_without_submitting=True,
+        ),
+        pe.Node(
+            DerivativesDataSink(
+                source_file=bold_file,
+                in_file=text_file,
+                base_directory=config.execution.output_dir,
+                space='MNI152NLin2009cAsym',
+                seg='Schaefer100',
+                statistic='pearsoncorrelation',
+                suffix='relmat',
+                extension='.tsv',
+                datatype='func',
+            ),
+            name=_get_wf_name(bold_file, 'ds_bold_schaefer_corr_tsv'),
+            run_without_submitting=True,
+        ),
+        pe.Node(
+            DerivativesDataSink(
+                source_file=bold_file,
+                in_file=bold_file,
+                base_directory=config.execution.output_dir,
+                space='MNI152NLin2009cAsym',
+                seg='Schaefer100',
+                statistic='reho',
+                suffix='bold',
+                extension='.json',
+                datatype='func',
+            ),
+            name=_get_wf_name(bold_file, 'ds_bold_schaefer_reho_json'),
+            run_without_submitting=True,
+        ),
+        pe.Node(
+            DerivativesDataSink(
+                source_file=bold_file,
+                in_file=text_file,
+                base_directory=config.execution.output_dir,
+                space='MNI152NLin2009cAsym',
+                seg='Schaefer100',
+                statistic='reho',
+                suffix='bold',
+                extension='.tsv',
+                datatype='func',
+            ),
+            name=_get_wf_name(bold_file, 'ds_bold_schaefer_reho_tsv'),
+            run_without_submitting=True,
+        ),
+        # ReHo maps
+        pe.Node(
+            DerivativesDataSink(
+                source_file=bold_file,
+                in_file=bold_file,
+                base_directory=config.execution.output_dir,
+                space='MNI152NLin2009cAsym',
+                statistic='reho',
+                suffix='boldmap',
+                extension='.json',
+                datatype='func',
+            ),
+            name=_get_wf_name(bold_file, 'ds_bold_reho_map_json'),
+            run_without_submitting=True,
+        ),
+        pe.Node(
+            DerivativesDataSink(
+                source_file=bold_file,
+                in_file=bold_file,
+                base_directory=config.execution.output_dir,
+                space='MNI152NLin2009cAsym',
+                statistic='reho',
+                suffix='boldmap',
+                extension='.nii.gz',
+                datatype='func',
+            ),
+            name=_get_wf_name(bold_file, 'ds_bold_reho_map_nii'),
+            run_without_submitting=True,
+        ),
+    ]
 
 
 def clean_datasinks(workflow: pe.Workflow) -> pe.Workflow:
@@ -310,40 +826,3 @@ def clean_datasinks(workflow: pe.Workflow) -> pe.Workflow:
         if node.split('.')[-1].startswith('ds_'):
             workflow.get_node(node).interface.out_path_base = ''
     return workflow
-
-
-def get_nss(confounds_file):
-    """Get number of non-steady state volumes.
-
-    Parameters
-    ----------
-    confounds_file : :obj:`str`
-        Path to the confounds file.
-
-    Returns
-    -------
-    :obj:`int`
-        Number of non-steady state volumes.
-
-    Notes
-    -----
-    This function assumes that all non-steady state volumes are contiguous,
-    and that the non-steady state outlier columns are named `non_steady_state_outlier*`.
-    """
-    import numpy as np
-    import pandas as pd
-
-    df = pd.read_table(confounds_file)
-
-    nss_cols = [c for c in df.columns if c.startswith('non_steady_state_outlier')]
-
-    dummy_scans = 0
-    if nss_cols:
-        initial_volumes_df = df[nss_cols]
-        dummy_scans = np.any(initial_volumes_df.to_numpy(), axis=1)
-        dummy_scans = np.where(dummy_scans)[0]
-
-        # reasonably assumes all NSS volumes are contiguous
-        dummy_scans = int(dummy_scans[-1] + 1)
-
-    return dummy_scans

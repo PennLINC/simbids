@@ -19,10 +19,8 @@ classifiers = [
 ]
 dependencies = [
   "acres",
-  "datalad",
   "nipype",
   "nireports",
-  "pandas",
   "pybids >= 0.15.6",
   "typer",
   "toml",
