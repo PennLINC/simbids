@@ -63,5 +63,5 @@ COPY . .
 # Set environment variables
 ENV PYTHONPATH=/app
 
-# Run the application
-CMD ["simbids"]
+# Set the entrypoint to the full path of simbids in the virtual environment
+ENTRYPOINT ["/opt/venv/bin/simbids"]
