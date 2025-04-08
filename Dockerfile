@@ -64,4 +64,4 @@ COPY . .
 ENV PYTHONPATH=/app
 
 # Run the application
-CMD ["python", "-m", "simbids"]
+CMD ["simbids"]

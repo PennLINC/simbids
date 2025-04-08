@@ -56,6 +56,14 @@ def _build_parser(**kwargs):
                 d[name] = loc
             setattr(namespace, self.dest, d)
 
+    class StoreUnknown(Action):
+        def __call__(self, parser, namespace, values, option_string=None):
+            if not hasattr(namespace, 'unknown_args'):
+                setattr(namespace, 'unknown_args', {})
+            # Remove leading dashes from the option string
+            key = option_string.lstrip('-')
+            namespace.unknown_args[key] = values[0] if values else True
+
     def _path_exists(path, parser):
         """Ensure a given path exists."""
         if path is None or not Path(path).exists():
@@ -112,8 +120,15 @@ def _build_parser(**kwargs):
     parser = ArgumentParser(
         description=(f'SimBIDS: Simulated BIDS data and workflows v{config.environment.version}'),
         formatter_class=ArgumentDefaultsHelpFormatter,
+        allow_abbrev=False,  # Disable abbreviation matching
         **kwargs,
     )
+    # Add a custom action to handle unknown arguments
+    parser._handle_unknown_args = lambda args: args
+    # Add a custom action to store unknown arguments
+    parser.register('action', 'store_unknown', StoreUnknown)
+    # Add a default action for unknown arguments
+    parser.set_defaults(unknown_args={})
     PathExists = partial(_path_exists, parser=parser)
     # IsFile = partial(_is_file, parser=parser)
     PositiveInt = partial(_min_one, parser=parser)
